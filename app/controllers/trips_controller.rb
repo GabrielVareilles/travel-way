@@ -7,6 +7,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @days = slice.size
+    @a_activities_day = slice
   end
 
   def new
@@ -30,5 +32,11 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:name, :start_date, :end_date, places: [])
+  end
+
+  def slice
+    a_activities_day = []
+    @trip.activities.each_slice(3) { |a| a_activities_day << a }
+    a_activities_day
   end
 end
