@@ -8,6 +8,7 @@
 trips = %w(Rome2017 Lille2018 Paris2015 Lyon2004)
 activities = %w(placeprincipale museebeauxarts chocolaterie)
 categories = %w(food arts parcs)
+place = %w(Paris Lille Lyon)
 
 Trip.destroy_all
 Activity.destroy_all
@@ -16,7 +17,8 @@ Activity.destroy_all
 trip = Trip.new(
   name: trips.sample,
   start_date: Time.new(2002, 10, 31),
-  end_date: Time.new(2002, 11, 26)
+  end_date: Time.new(2002, 11, 26),
+  places: ['Paris', 'Lille', 'Lyon']
   )
 trip.save
 7.times do
@@ -25,6 +27,7 @@ trip.save
     category: categories.sample,
     long: 3.066667,
     lat: 50.633333,
+    place_name: place.sample,
     trip: trip
     )
 activity.save

@@ -7,8 +7,11 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @days = slice.size
-    @a_activities_day = slice
+    @groups_place = group_by_place
+    @sliced_activities = []
+    @groups_place.each do |group|
+      @sliced_activities << slice(group)
+    end
   end
 
   def new
@@ -34,9 +37,16 @@ class TripsController < ApplicationController
     params.require(:trip).permit(:name, :start_date, :end_date, places: [])
   end
 
-  def slice
+
+  def group_by_place
+    @trip.activities.group_by{ |h| h[:place_name] }.values
+  end
+
+  def slice(group)
     a_activities_day = []
-    @trip.activities.each_slice(3) { |a| a_activities_day << a }
+    group.each_slice(3) { |a| a_activities_day << a }
     a_activities_day
   end
+
+
 end

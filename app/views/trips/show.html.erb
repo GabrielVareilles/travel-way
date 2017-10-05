@@ -1,11 +1,13 @@
-<h1>Your trip to: <%= @trip.name %></h1>
+<h1>Your trip name: <%= @trip.name %></h1>
 <div class="container">
-<% @a_activities_day.each do |activitiesday|%>
-  <div class="row">
-    <% activitiesday.each do |activity| %>
-      <%= activity.name %>
+  <% @sliced_activities.each do |group| %>
+      <% group.each do |subgroup| %>
+        <%= subgroup.first.place_name %>
+          <div class="row">
+          <% subgroup.each do |activity| %>
+            <%= activity.name %>
+          <% end %>
+          </div>
       <% end %>
-   </div>
   <% end %>
-
 </div>
