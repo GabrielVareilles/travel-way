@@ -55,6 +55,8 @@ def bearer_token
 end
 
 
+
+
 # Make a request to the Fusion search endpoint. Full documentation is online at:
 # https://www.yelp.com/developers/documentation/v3/business_search
 #
