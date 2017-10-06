@@ -1,14 +1,1 @@
-<% require_relative "../../services/fetch_activities_service" %>
-<% require_relative "../../services/defining_activities_categories_service" %>
 
-<% places = ["paris", "lille", "lyon"] %>
-<% places.each do |place| %>
-  <h2><%= place %></h2>
-  <% CATEGORIES.each do |category| %>
-    <h4><%= category[0] %></h4>
-    <% results = search(category, place) %>
-    <% results['businesses'].sort_by{|result| result['review_count']}.reverse.first(15).each do |result| %>
-    <p><%= result['name'] %></p>
-    <% end %>
-  <% end %>
-<% end %>
