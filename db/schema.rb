@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171005131031) do
     t.string "category"
     t.float "long"
     t.float "lat"
+    t.string "place_name"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
