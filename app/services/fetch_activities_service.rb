@@ -5,8 +5,8 @@ require "optparse"
 
 # Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
 # from https://www.yelp.com/developers/v3/manage_app
-CLIENT_ID = ENV[YELP_ID]
-CLIENT_SECRET = ENV[YELP_SECRET]
+CLIENT_ID = ENV['YELP_ID']
+CLIENT_SECRET = ENV['YELP_SECRET']
 
 
 # Constants, do not change these
@@ -86,7 +86,7 @@ def search(term, location)
   url = "#{API_HOST}#{SEARCH_PATH}"
   params = {
     term: term,
-    location: location,
+    location: location
   }
 
   response = HTTP.auth(bearer_token).get(url, params: params)
