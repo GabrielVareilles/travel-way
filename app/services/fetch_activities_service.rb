@@ -45,7 +45,7 @@ def bearer_token
   params = {
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
-    grant_type: GRANT_TYPE,
+    grant_type: GRANT_TYPE
   }
 
   response = HTTP.post(url, params: params)
@@ -88,7 +88,9 @@ def search(term, location)
   url = "#{API_HOST}#{SEARCH_PATH}"
   params = {
     term: term,
-    location: location
+    location: location,
+    sort_by: 'rating',
+    radius: 30000
   }
 
   response = HTTP.auth(bearer_token).get(url, params: params)
