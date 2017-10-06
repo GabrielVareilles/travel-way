@@ -5,22 +5,22 @@ require "optparse"
 
 # Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
 # from https://www.yelp.com/developers/v3/manage_app
-CLIENT_ID = "7HhphBL10gBsaQKoO8nhbw"
-CLIENT_SECRET = "EmRZH2Rl3Hf55ggfzAKqRajO1KEyOSuTN4E1kPkbZZeZnCUX6PtOQOiXuUnfybYv"
+# CLIENT_ID = "7HhphBL10gBsaQKoO8nhbw"
+# CLIENT_SECRET = "EmRZH2Rl3Hf55ggfzAKqRajO1KEyOSuTN4E1kPkbZZeZnCUX6PtOQOiXuUnfybYv"
 
 
-# Constants, do not change these
-API_HOST = "https://api.yelp.com"
-SEARCH_PATH = "/v3/businesses/search"
-BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
-TOKEN_PATH = "/oauth2/token"
-GRANT_TYPE = "client_credentials"
+# # Constants, do not change these
+# API_HOST = "https://api.yelp.com"
+# SEARCH_PATH = "/v3/businesses/search"
+# BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
+# TOKEN_PATH = "/oauth2/token"
+# GRANT_TYPE = "client_credentials"
 
 
-DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-DEFAULT_TERM = "dinner"
-DEFAULT_LOCATION = "San Francisco, CA"
-SEARCH_LIMIT = 5
+# DEFAULT_BUSINESS_ID = "yelp-san-francisco"
+# DEFAULT_TERM = "dinner"
+# DEFAULT_LOCATION = "San Francisco, CA"
+# SEARCH_LIMIT = 5
 
 
 # Make a request to the Fusion API token endpoint to get the access token.
