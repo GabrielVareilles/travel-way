@@ -10,8 +10,8 @@ activities = %w(placeprincipale museebeauxarts chocolaterie)
 categories = %w(food arts parcs)
 place = %w(Paris Lille Lyon)
 
-Trip.destroy_all
 Activity.destroy_all
+Trip.destroy_all
 
 10.times do
 trip = Trip.new(
