@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     resources :trips do
       resources :activities, only: [:index, :show, :delete]
      end
+
+     get '/setplaces', to: 'pages#setplaces'
+     post '/setactivities', to: 'pages#setactivities'
    end
 # end
