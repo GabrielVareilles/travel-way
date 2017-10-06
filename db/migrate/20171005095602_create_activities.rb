@@ -5,6 +5,7 @@ class CreateActivities < ActiveRecord::Migration[5.1]
       t.string :category
       t.float :long
       t.float :lat
+      t.string :place_name
       t.references :trip, foreign_key: true
 
       t.timestamps
