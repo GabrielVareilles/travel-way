@@ -1,5 +1,31 @@
+<div class="container">
 <h1>My trips :</h1>
+
+
 <% @trips.each do |trip| %>
-<%= trip.name %>
-<br>
+
+
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 portfolio print panel" data-toggle="modal" data-target="#porfolio-details-3">
+                    <div class="panel-body">
+                      <div class="portfolio-title">
+                        <div class="portfolio-icon">
+                          <div>Go</div>
+                        </div>
+                        <div class="title">
+                          <h4><%= trip.name %></h4>
+                          <p><%= trip.places.join(" - ")%></p>
+                          <p><% trip.start_date %> - <% trip.end_date %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="portfolio-image">
+                        <%=image_tag "carte1.jpg", id: "carte"%>
+                    </div>
+                  </div>
+                </div>
+
+
 <% end %>
+</div>

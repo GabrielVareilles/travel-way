@@ -1,0 +1,168 @@
+/* Panels */
+.trip-panel {
+  background:none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.trip-panel-heading {
+  color: #ffffff;
+  -web-kit-border-top-left-radius: 6px;
+  -web-kit-border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.trip-panel-heading h4{
+  padding: 10px 0 10px 0 !important;
+  margin: 0;
+  color: #ffffff !important;
+
+}
+
+.trip-panel-heading p{
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: -8px;
+}
+
+.trip-panel-heading .trip-panel-icon {
+  font-size: 1.7em;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color:rgba(0, 0, 0, 0.3);
+
+}
+
+.trip-panel-heading .trip-panel-icon .glyphicon {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.trip-panel-heading .trip-panel-title {
+  display: table;
+}
+
+.trip-panel-body {
+  background: #fff;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  padding: 20px;
+}
+
+.trip-service .trip-panel-body {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.trip-portfolio .trip-panel-body {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+}
+
+
+/************
+PORTFOLIO STYLES
+************/
+.trip-portfolio {
+  margin-bottom: 20px;
+}
+
+.trip-portfolio h4 {
+  color: #000;
+}
+
+.trip-portfolio .trip-panel-body{
+  padding: 0;
+}
+
+.trip-portfolio-filters {
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.trip-portfolio-filters .btn {
+  opacity: 0.3;
+}
+
+.trip-portfolio-filters .btn {
+  color: #fff;
+}
+
+.trip-filter-selected {
+  opacity: 1 !important;
+}
+
+.trip-portfolio-title {
+  padding: 15px;
+  min-height: 110px;
+
+}
+
+.trip-portfolio-title .title {
+  display: table;
+}
+
+.trip-portfolio-image {
+  background-size: cover !important;
+  background-position: center;
+  height: 200px;
+  width: auto;
+}
+
+.trip-portfolio-icon {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.trip-web .trip-portfolio-icon {
+  background-color: #ed78a6;
+}
+
+.trip-mobile .trip-portfolio-icon {
+  background-color: #56c2b1;
+}
+
+.trip-print .trip-portfolio-icon {
+  background-color: #70c6da;
+}
+
+.trip-portfolio-icon div {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.trip-portfolio-filters .btn {
+  margin-right: 10px;
+}
+
