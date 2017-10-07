@@ -21,7 +21,7 @@ class FetchActivitiesService
   DEFAULT_BUSINESS_ID = "yelp-san-francisco"
   DEFAULT_TERM = "dinner"
   DEFAULT_LOCATION = "San Francisco, CA"
-  SEARCH_LIMIT = 15
+  SEARCH_LIMIT = 5
 
   CLIENT_ID = ENV['YELP_ID']
   CLIENT_SECRET = ENV['YELP_SECRET']
@@ -29,7 +29,7 @@ class FetchActivitiesService
   def initialize(term, location)
     @url = "#{API_HOST}#{SEARCH_PATH}"
     @params = {
-    term: term,
+    categories: term,
     location: location,
     sort_by: 'rating',
     radius: 30000,
@@ -39,7 +39,8 @@ class FetchActivitiesService
 
   def call
     response = HTTP.auth(bearer_token).get(@url, params: @params)
-    response.parse['businesses'].map {|business| business.slice('id', 'name', 'place_name', 'display_address', 'display_phone', 'image_url')  }
+    result_hash = response.parse['businesses'].map {|business| business.slice('id', 'name', 'place_name', 'display_address', 'display_phone', 'image_url', 'description')  }
+    result_hash.map { |h| OpenStruct.new(h) }
   end
 
 

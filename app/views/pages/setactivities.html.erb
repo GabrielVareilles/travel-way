@@ -1,4 +1,10 @@
 <%= simple_form_for(@trip) do |f| %>
-  <%= f.input :activity_ids, collection: @activities, label_method: :name %>
+<div class="container">
+  <div class="row">
+    <% @activities.flatten.each do |activity| %>
+    <%= render "layouts/card", activity: activity %>
+    <% end %>
+  </div>
+</div>
 <% end %>
 

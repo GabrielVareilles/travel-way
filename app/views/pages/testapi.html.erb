@@ -1,4 +1,4 @@
-<%results = FetchActivitiesService.new("food,Mexican", "paris").()
-results.each do |r|%>
-<%= r.name %><br>
+<% results = FetchActivitiesService.new("mexican", "paris").() %>
+<% results.each do |r|%>
+<%= r['name'] %><br>
 <% end %>
