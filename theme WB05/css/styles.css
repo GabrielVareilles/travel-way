@@ -7,7 +7,7 @@ html {
   	overflow-x: hidden !important;
 }
 
-body{ 
+body{
 	background-color: #fefefe;
 	background: url(../images/background.jpg) no-repeat top center;
 	-webkit-background-size: cover;
@@ -47,6 +47,8 @@ a:visited{
 	color: #ed78a6;
 	text-decoration: none;
 }
+
+
 
 
 /************
@@ -262,7 +264,7 @@ HEADER AND MENU STYLES
 }
 
 .header-icon {
-	font-size: 8em;	
+	font-size: 8em;
 	float: left;
 	margin-right: 30px;
 	margin-top: 17px;
@@ -500,8 +502,8 @@ SERVICES STYLES
 .portfolio .panel-body {
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-	
-}	
+
+}
 
 
 
@@ -943,7 +945,7 @@ RESOLLUTION SPECIFIC STYLES
 }
 
 @media (max-width: 990px) {
-	
+
 }
 
 @media (min-width: 990px){
