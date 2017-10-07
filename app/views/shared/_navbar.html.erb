@@ -1,0 +1,47 @@
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <a href="/" class="navbar-wagon-brand">
+  <%= image_tag "logo3.png", id: "logo" %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+
+
+    <% if user_signed_in? %>
+      <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <img class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" <%= image_tag "avatar.jpg", id: "avatar" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><a href="#">Profile</a></li>
+            <li><%= link_to "Log out", "users/sign_out", :method => :delete%></li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <div class="navbar-wagon-item">
+      <%= link_to "Log in", "/users/sign_in", class: "navbar-log_in navbar-wagon-link" %>
+      <%= link_to "Sign up", "/users/sign_up", class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <% if user_signed_in? %>
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Trips</a></li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="navbar-wagon-item">
+      <%= link_to "Log in", "/users/sign_in", class: "navbar-log_in navbar-wagon-link" %>
+      <%= link_to "Sign up", "/users/sign_up", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

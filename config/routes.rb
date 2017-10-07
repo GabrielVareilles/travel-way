@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
      get '/setplaces', to: 'pages#setplaces'
      post '/setactivities', to: 'pages#setactivities'
+     get '/testapi', to: "pages#testapi"
    end
 # end
