@@ -3,7 +3,7 @@
   <div class="panel-body">
     <div class="portfolio-title">
       <div class="portfolio-icon">
-      <div><%= check_box_tag 'trip[activity_ids][]', activity.id %></div>
+        <div><%= check_box_tag 'trip[activity_ids][]', activity.id %></div>
       </div>
       <div class="title">
         <h4><%= activity.name %></h4>
@@ -11,8 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="portfolio-image">
-    <%= image_tag activity.image_url %>
+  <div class="portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= activity.image_url %>');">
   </div>
 </div>
 
