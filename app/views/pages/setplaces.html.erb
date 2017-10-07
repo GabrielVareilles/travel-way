@@ -1,21 +1,25 @@
-<div class="site-holder">
 
-<div class="container form-trip">
-  <h1>Create your own trip</h1>
-  <h5>One period, three cities and here we go...</h5>
-  <div class="content-form">
 
-      <%= simple_form_for @trip, url: setactivities_path do |f| %>
-      <%= f.input :name, placeholder: "Asia 2017" %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-      <%= f.input :places, as: :array, placeholder: "Bali" %>
-      <%= f.input :places, as: :array, placeholder: "Tokyo" %>
+<div class="site-holder" style="background-image: url(<%= image_path('background.jpg') %>)">
 
-      <%= f.input :places, as: :array, placeholder: "SHanguai" %>
-      <%= f.submit %>
-       <%end%>
+  <div class="container form-trip">
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+
+        <h1>Create your own trip</h1>
+        <h5>One period, three cities and here we go...</h5>
+        <div class="content-form">
+
+            <%= simple_form_for @trip, url: setactivities_path do |f| %>
+            <%= f.input :name, placeholder: "Asia 2017", label: "Name your trip" %>
+            <%= f.input :start_date %>
+            <%= f.input :places, as: :array, placeholder: "Bali", label: "City 1" %>
+            <%= f.input :places, as: :array, placeholder: "Tokyo", label: "City 2" %>
+            <%= f.input :places, as: :array, placeholder: "Shanghai", label: "City 3" %>
+            <%= f.submit :class => "btn background-1" %>
+             <%end%>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
 </div>
