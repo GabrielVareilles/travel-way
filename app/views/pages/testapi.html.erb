@@ -1,0 +1,4 @@
+<%results = FetchActivitiesService.new("food,Mexican", "paris").()
+results.each do |r|%>
+<%= r.name %><br>
+<% end %>

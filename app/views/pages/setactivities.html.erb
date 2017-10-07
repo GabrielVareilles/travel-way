@@ -1,5 +1,4 @@
+<%= simple_form_for(@trip) do |f| %>
+  <%= f.input :activity_ids, collection: @activities, label_method: :name %>
+<% end %>
 
-
-    <% @businesses.each do |result| %>
-    <p><%= result %></p>
-    <% end %>
