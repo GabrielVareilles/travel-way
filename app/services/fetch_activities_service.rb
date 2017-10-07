@@ -6,21 +6,67 @@ require "optparse"
 # Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
 # from https://www.yelp.com/developers/v3/manage_app
 
-CLIENT_ID = ENV['YELP_ID']
-CLIENT_SECRET = ENV['YELP_SECRET']
-
-# Constants, do not change these
-API_HOST = "https://api.yelp.com"
-SEARCH_PATH = "/v3/businesses/search"
-BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
-TOKEN_PATH = "/oauth2/token"
-GRANT_TYPE = "client_credentials"
 
 
-DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-DEFAULT_TERM = "dinner"
-DEFAULT_LOCATION = "San Francisco, CA"
-SEARCH_LIMIT = 15
+
+class FetchActivitiesService
+  # Constants, do not change these
+  API_HOST = "https://api.yelp.com"
+  SEARCH_PATH = "/v3/businesses/search"
+  BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
+  TOKEN_PATH = "/oauth2/token"
+  GRANT_TYPE = "client_credentials"
+
+
+  DEFAULT_BUSINESS_ID = "yelp-san-francisco"
+  DEFAULT_TERM = "dinner"
+  DEFAULT_LOCATION = "San Francisco, CA"
+  SEARCH_LIMIT = 15
+
+  CLIENT_ID = ENV['YELP_ID']
+  CLIENT_SECRET = ENV['YELP_SECRET']
+
+  def initialize(term, location)
+    @url = "#{API_HOST}#{SEARCH_PATH}"
+    @params = {
+    term: term,
+    location: location,
+    sort_by: 'rating',
+    radius: 30000,
+    limit: SEARCH_LIMIT
+  }
+  end
+
+  def call
+    response = HTTP.auth(bearer_token).get(@url, params: @params)
+    response.parse['businesses'].map {|business| business.slice('id', 'name', 'place_name', 'display_address', 'display_phone', 'image_url')  }
+  end
+
+
+  private
+
+  def bearer_token
+    # Put the url together
+    url = "#{API_HOST}#{TOKEN_PATH}"
+
+    raise "Please set your CLIENT_ID" if CLIENT_ID.nil?
+    raise "Please set your CLIENT_SECRET" if CLIENT_SECRET.nil?
+
+    # Build our params hash
+    params = {
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      grant_type: GRANT_TYPE
+    }
+
+
+    response = HTTP.post(url, params: params)
+    parsed = response.parse
+
+    "#{parsed['token_type']} #{parsed['access_token']}"
+  end
+
+end
 
 
 # Make a request to the Fusion API token endpoint to get the access token.
@@ -34,25 +80,6 @@ SEARCH_LIMIT = 15
 #   # => "Bearer some_fake_access_token"
 #
 # Returns your access token
-def bearer_token
-  # Put the url together
-  url = "#{API_HOST}#{TOKEN_PATH}"
-
-  raise "Please set your CLIENT_ID" if CLIENT_ID.nil?
-  raise "Please set your CLIENT_SECRET" if CLIENT_SECRET.nil?
-
-  # Build our params hash
-  params = {
-    client_id: CLIENT_ID,
-    client_secret: CLIENT_SECRET,
-    grant_type: GRANT_TYPE
-  }
-
-  response = HTTP.post(url, params: params)
-  parsed = response.parse
-
-  "#{parsed['token_type']} #{parsed['access_token']}"
-end
 
 
 
@@ -84,18 +111,6 @@ end
 #        }
 #
 # Returns a parsed json object of the request
-def search(term, location)
-  url = "#{API_HOST}#{SEARCH_PATH}"
-  params = {
-    term: term,
-    location: location,
-    sort_by: 'rating',
-    radius: 30000
-  }
-
-  response = HTTP.auth(bearer_token).get(url, params: params)
-  response.parse
-end
 
 
 # Look up a business by a given business id. Full documentation is online at:
