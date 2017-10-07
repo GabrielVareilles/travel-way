@@ -1,0 +1,18 @@
+
+<div class="col-md-4 col-sm-6 portfolio print panel hide show" data-toggle="modal" data-target="#porfolio-details-3">
+  <div class="panel-body">
+    <div class="portfolio-title">
+      <div class="portfolio-icon">
+      <div><%= check_box_tag 'trip[activity_ids][]', activity.id %></div>
+      </div>
+      <div class="title">
+        <h4><%= activity.name %></h4>
+        <em><%= activity.description %></em>
+      </div>
+    </div>
+  </div>
+  <div class="portfolio-image">
+    <%= image_tag activity.image_url %>
+  </div>
+</div>
+
