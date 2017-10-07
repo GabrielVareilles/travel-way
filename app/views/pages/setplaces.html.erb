@@ -1,13 +1,17 @@
+<div class="timeline-body">
+  <h1>Create your own trip</h1>
+  <h5>One period, three cities and here we go...</h5>
+  <div class="panel-body">
 
-<div class="container">
-  <%= simple_form_for @trip, url: setactivities_path do |f| %>
-  <%= f.input :name %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :places, as: :array %>
-  <%= f.input :places, as: :array %>
-  <%= f.input :places, as: :array %>
+      <%= simple_form_for @trip, url: setactivities_path do |f| %>
+      <%= f.input :name, placeholder: "Asia 2017" %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :places, as: :array, placeholder: "Bali" %>
+      <%= f.input :places, as: :array, placeholder: "Tokyo" %>
+      <%= f.input :places, as: :array, placeholder: "SHanguai" %>
 
-   <%= f.submit %>
-   <%end%>
- </div>
+      <%= f.submit %>
+       <%end%>
+
+</div>
