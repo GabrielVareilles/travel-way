@@ -1,170 +1,170 @@
-/* Panels */
-.panel {
-  background:none;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
+// /* Panels */
+// .panel {
+//   background:none;
+//   box-shadow: none;
+//   -webkit-box-shadow: none;
+// }
 
-.panel-heading {
-  color: #ffffff;
-  -web-kit-border-top-left-radius: 6px;
-  -web-kit-border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
+// .panel-heading {
+//   color: #ffffff;
+//   -web-kit-border-top-left-radius: 6px;
+//   -web-kit-border-top-right-radius: 6px;
+//   border-top-left-radius: 6px;
+//   border-top-right-radius: 6px;
+// }
 
-.panel-heading h4{
-  padding: 10px 0 10px 0 !important;
-  margin: 0;
-  color: #ffffff !important;
-  font-size: 15px !important;
+// .panel-heading h4{
+//   padding: 10px 0 10px 0 !important;
+//   margin: 0;
+//   color: #ffffff !important;
+//   font-size: 15px !important;
 
-}
+// }
 
-.panel-heading p{
-  font-style: italic;
-  font-size: 0.8em;
-  margin-top: -8px;
-}
+// .panel-heading p{
+//   font-style: italic;
+//   font-size: 0.8em;
+//   margin-top: -8px;
+// }
 
-.panel-heading .panel-icon {
-  font-size: 1.7em;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  float: left;
-  margin-right: 10px;
-  border-top-right-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  background-color:rgba(0, 0, 0, 0.3);
+// .panel-heading .panel-icon {
+//   font-size: 1.7em;
+//   text-align: center;
+//   width: 50px;
+//   height: 50px;
+//   float: left;
+//   margin-right: 10px;
+//   border-top-right-radius: 50%;
+//   border-top-left-radius: 50%;
+//   border-bottom-right-radius: 50%;
+//   border-bottom-left-radius: 50%;
+//   background-color:rgba(0, 0, 0, 0.3);
 
-}
+// }
 
-.panel-heading .panel-icon .glyphicon {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-}
+// .panel-heading .panel-icon .glyphicon {
+//   position: relative;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   -webkit-transform: translateY(-50%);
+// }
 
-.panel-heading .panel-title {
-  display: table;
-}
+// .panel-heading .panel-title {
+//   display: table;
+// }
 
-.panel-body {
-  height: 70px !important;
-  background: #fff;
-  border-bottom: 1px solid transparent;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  padding: 20px;
-}
+// .panel-body {
+//   height: 70px !important;
+//   background: #fff;
+//   border-bottom: 1px solid transparent;
+//   border-top-left-radius: 6px;
+//   border-top-right-radius: 6px;
+//   border-bottom-left-radius: 6px;
+//   border-bottom-right-radius: 6px;
+//   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+//   box-shadow: 0 1px 1px rgba(0,0,0,.05);
+//   padding: 20px;
+// }
 
-.service .panel-body {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+// .service .panel-body {
+//   border-top-left-radius: 0;
+//   border-top-right-radius: 0;
+// }
 
-.portfolio .panel-body {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+// .portfolio .panel-body {
+//   border-bottom-left-radius: 0;
+//   border-bottom-right-radius: 0;
 
-}
+// }
 
 
-/************
-PORTFOLIO STYLES
-************/
-.portfolio {
-  margin-bottom: 20px;
-}
+// /************
+// PORTFOLIO STYLES
+// ************/
+// .portfolio {
+//   margin-bottom: 20px;
+// }
 
-.portfolio h4 {
-  color: #000;
-}
+// .portfolio h4 {
+//   color: #000;
+// }
 
-.portfolio .panel-body{
-  padding: 0;
-}
+// .portfolio .panel-body{
+//   padding: 0;
+// }
 
-.portfolio-filters {
-  padding: 15px;
-  margin-bottom: 20px;
-}
+// .portfolio-filters {
+//   padding: 15px;
+//   margin-bottom: 20px;
+// }
 
-.portfolio-filters .btn {
-  opacity: 0.3;
-}
+// .portfolio-filters .btn {
+//   opacity: 0.3;
+// }
 
-.portfolio-filters .btn {
-  color: #fff;
-}
+// .portfolio-filters .btn {
+//   color: #fff;
+// }
 
-.filter-selected {
-  opacity: 1 !important;
-}
+// .filter-selected {
+//   opacity: 1 !important;
+// }
 
-.portfolio-title {
-  padding: 15px;
-  min-height: 70px;
+// .portfolio-title {
+//   padding: 15px;
+//   min-height: 70px;
 
-}
+// }
 
-.portfolio-title .title {
-  display: table;
-}
+// .portfolio-title .title {
+//   display: table;
+// }
 
-.portfolio-image {
+.activities-portfolio-image {
   background-size: cover !important;
   background-position: center;
   height: 200px;
   width: auto;
 }
 
-.portfolio-icon {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  overflow: hidden;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  float: left;
-  margin-right: 10px;
-  text-align: center;
-  color: #fff;
-  font-size: 1.5em;
-  font-weight: 700;
-}
+// .portfolio-icon {
+//   width: 50px;
+//   height: 50px;
+//   position: relative;
+//   overflow: hidden;
+//   -webkit-border-radius: 50%;
+//   -moz-border-radius: 50%;
+//   -ms-border-radius: 50%;
+//   -o-border-radius: 50%;
+//   border-radius: 50%;
+//   float: left;
+//   margin-right: 10px;
+//   text-align: center;
+//   color: #fff;
+//   font-size: 1.5em;
+//   font-weight: 700;
+// }
 
-.web .portfolio-icon {
-  background-color: #ed78a6;
-}
+// .web .portfolio-icon {
+//   background-color: #ed78a6;
+// }
 
-.mobile .portfolio-icon {
-  background-color: #56c2b1;
-}
+// .mobile .portfolio-icon {
+//   background-color: #56c2b1;
+// }
 
-.print .portfolio-icon {
-  background-color: #70c6da;
-}
+// .print .portfolio-icon {
+//   background-color: #70c6da;
+// }
 
-.portfolio-icon div {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-}
+// .portfolio-icon div {
+//   position: relative;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   -webkit-transform: translateY(-50%);
+// }
 
-.portfolio-filters .btn {
-  margin-right: 10px;
-}
+// .portfolio-filters .btn {
+//   margin-right: 10px;
+// }
 
