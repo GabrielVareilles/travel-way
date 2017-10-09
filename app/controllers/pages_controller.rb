@@ -10,14 +10,18 @@ class PagesController < ApplicationController
   end
 
   def setactivities
-    @activities = []
-    @places = params['trip']['places']
+    @places = []
+
+    params['trip']['places'].each do |place|
+      @places << { name: place, activities: [] }
+    end
+
     @places.each do |place|
       ActivitiesCategories::CATEGORIES.each do |category|
         category.each do |elem|
-          results = FetchActivitiesService.new(elem, place).()
+          results = FetchActivitiesService.new(elem, place[:name]).()
 
-          @activities << results
+          place[:activities] << results
         end
        end
      end
