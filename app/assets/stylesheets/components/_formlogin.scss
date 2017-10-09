@@ -1,0 +1,51 @@
+.form {
+  background-position: left 25%;
+}
+
+.content-login {
+  position: relative;
+  height: 22em;
+  width: 405px;
+  background-color: white;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.container .login {
+  width: 200px;
+  margin-top: 30px;
+}
+
+// BANDE/IMAGE SUR COTE DU FORM
+
+.card-photo-login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  height: 22em;
+  width: 4%;
+}
+
+// FORMULAIRE EN LUI-MÊME
+
+.card-form {
+  position: absolute;
+  top: 22px;
+  right: 38px;
+}
+
+.btn.background-1.form-trip {
+  background-color: #ed78a6;
+  font-size: 14px;
+  padding: 9px;
+  position: absolute;
+  right: 0;
+  width: 100px;
+}
+
+input#user_remember_me.boolean.optional {
+    width: 12px;
+    height: 12px;
+}
