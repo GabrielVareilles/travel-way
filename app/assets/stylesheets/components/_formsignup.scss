@@ -1,6 +1,10 @@
-.content-form-trip {
+.form-signup {
+  background-position: left 25%;
+}
+
+.content-signup {
   position: relative;
-  height: 44em;
+  height: 26em;
   width: 405px;
   background-color: white;
   border-radius: 6px;
@@ -11,48 +15,30 @@
 padding-left: 0px;
 }
 
-.input {
-  display: block;
-  color: red;
+.container .signup {
+  width: 200px;
+  margin-top: 30px;
 }
+
+// SOUS-TITRE DU FORM
+.h-form {
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  margin: -5px 0 20px 0;
+}
+
+// INPUTS
 
 .optional {
   font-size: 15px;
 }
-.container .form-trip {
-  width: 200px;
-}
 
-.site-holder .form-trip {
-  background-position: left 25%;
-}
-
-.container.form-trip {
-  margin-top: 30px;
-}
-
-input::-webkit-inner-spin-button,
-input::-webkit-clear-button {
-  display: none;
-}
-
-input::-webkit-calendar-picker-indicator {
-  color: grey;
-  opacity: 1;
-}
-
-input::-webkit-calendar-picker-indicator:hover {
-  cursor: pointer;
-}
-
-input::-webkit-date-time-edit {
-  color: red;
-}
+// BANDE/IMAGE SUR COTE DU FORM
 
 .background-with-image-3 {
   background-position: bottom center;
   background-size: cover;
-
 }
 
 .card-photo {
@@ -61,10 +47,12 @@ input::-webkit-date-time-edit {
   left: 0;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-     height: 44em;
+  height: 26em;
   width: 4%;
-
 }
+
+// FORMULAIRE EN LUI-MÊME
+
 .card-form {
   position: absolute;
   top: 22px;
@@ -78,12 +66,4 @@ input::-webkit-date-time-edit {
   position: absolute;
   right: 0;
   width: 100px;
-}
-
-.h-form {
-  font-size: 15px;
-  font-weight: 300;
-  font-style: italic;
-  margin: -5px 0 20px 0;
-
 }
