@@ -1,0 +1,69 @@
+.form-signup {
+  background-position: left 25%;
+}
+
+.content-signup {
+  position: relative;
+  height: 26em;
+  width: 405px;
+  background-color: white;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.main-container h1, h5 {
+padding-left: 0px;
+}
+
+.container .signup {
+  width: 200px;
+  margin-top: 30px;
+}
+
+// SOUS-TITRE DU FORM
+.h-form {
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  margin: -5px 0 20px 0;
+}
+
+// INPUTS
+
+.optional {
+  font-size: 15px;
+}
+
+// BANDE/IMAGE SUR COTE DU FORM
+
+.background-with-image-3 {
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.card-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  height: 26em;
+  width: 4%;
+}
+
+// FORMULAIRE EN LUI-MÊME
+
+.card-form {
+  position: absolute;
+  top: 22px;
+  right: 38px;
+}
+
+.btn.background-1.form-trip {
+  background-color: #ed78a6;
+  font-size: 14px;
+  padding: 9px;
+  position: absolute;
+  right: 0;
+  width: 100px;
+}

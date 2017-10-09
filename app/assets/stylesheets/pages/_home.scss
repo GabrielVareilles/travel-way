@@ -1,5 +1,9 @@
 // Specific CSS for your home-page
 
+.home {
+  background-position: top;
+}
+
 .header {
   background-color: #000;
   background: no-repeat bottom center;
@@ -207,6 +211,12 @@
   margin-bottom: 20px;
 }
 
+.portfolio-content {
+  background: #fff;
+  padding : 5px;
+  height: 80px;
+}
+
 .portfolio h4 {
   color: #000;
 }
@@ -214,6 +224,7 @@
 .panel-body{
   padding: 0;
   height: 140px;
+  margin-bottom: 0px;
 }
 
 .portfolio-filters {
