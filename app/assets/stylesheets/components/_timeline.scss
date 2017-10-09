@@ -1,0 +1,153 @@
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+  top: 10px;
+  margin-bottom: 50px;
+  position: relative;
+}
+.timeline:before {
+  top: 10px;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 0px;
+  margin-left: -1.5px;
+  background: -webkit-linear-gradient(#ed78a6, #56c2b1, #6fc6d9, #70c6da); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#ed78a6, #56c2b1, #6fc6d9, #70c6da); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#ed78a6, #56c2b1, #6fc6d9, #70c6da); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#ed78a6, #56c2b1, #6fc6d9, #70c6da); /* Standard syntax */
+}
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+
+.timeline > li > .timeline-panel {
+  left:50px;
+  margin-right:50px;
+  margin-bottom: 50px;
+  margin-top: -25px;
+  float: left;
+  position: relative;
+  width: 100%;
+  padding-right: 50px;
+}
+
+.timeline > li > .timeline-panel:after {
+  position: absolute;
+  top: 27px;
+  right: -14px;
+  display: inline-block;
+  content: " ";
+}
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  position: absolute;
+  margin-left: -10px;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background: #fff;
+}
+
+.timeline > li > .timeline-line {
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: -2px;
+  z-index: 99;
+}
+
+.badge-1 {
+  border: 3px solid #ed78a6 !important;
+}
+
+.badge-2 {
+  border: 3px solid #56c2b1 !important;
+}
+
+.badge-3 {
+  border: 3px solid #6fc6d9 !important;
+}
+
+.badge-4 {
+  border: 3px solid #70c6da !important;
+}
+
+.line-1 {
+  background: -webkit-linear-gradient(#ed78a6, #56c2b1);
+  background: -o-linear-gradient(#ed78a6, #56c2b1);
+  background: -moz-linear-gradient(#ed78a6, #56c2b1);
+  background: linear-gradient(#ed78a6, #56c2b1);
+}
+
+.line-2 {
+  background: -webkit-linear-gradient(#56c2b1, #6fc6d9);
+  background: -o-linear-gradient(#56c2b1, #6fc6d9);
+  background: -moz-linear-gradient(#56c2b1, #6fc6d9);
+  background: linear-gradient(#56c2b1, #6fc6d9);
+}
+
+.line-3 {
+  background: -webkit-linear-gradient(#6fc6d9, #70c6da);
+  background: -o-linear-gradient(#6fc6d9, #70c6da);
+  background: -moz-linear-gradient(#6fc6d9, #70c6da);
+  background: linear-gradient(#6fc6d9, #70c6da);
+}
+
+.line-4 {
+  background: -webkit-linear-gradient(#70c6da, #ed78a6);
+  background: -o-linear-gradient(#70c6da, #ed78a6);
+  background: -moz-linear-gradient(#70c6da, #ed78a6);
+  background: linear-gradient(#70c6da, #ed78a6);
+}
+
+
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+.timeline-body > p + p {
+  margin-top: 5px;
+}
+
+.timeline-body h1, h5{
+  padding-left: 15px;
+  color: #444;
+}
+
+.timeline-body h5 {
+  margin: -7px 0 20px 0;
+}
+
