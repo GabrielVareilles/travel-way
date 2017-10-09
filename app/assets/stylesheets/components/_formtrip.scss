@@ -1,4 +1,4 @@
-.form-trip {
+.form {
   background-position: left 25%;
 }
 
@@ -11,26 +11,8 @@
   margin-bottom: 30px;
 }
 
-.main-container h1, h5 {
-padding-left: 0px;
-}
-
 .container .form-trip {
   width: 200px;
-}
-
-// SOUS-TITRE DU FORM
-.h-form {
-  font-size: 15px;
-  font-weight: 300;
-  font-style: italic;
-  margin: -5px 0 20px 0;
-}
-
-// INPUTS
-
-.optional {
-  font-size: 15px;
 }
 
 // DATE INPUTS
@@ -55,13 +37,7 @@ input::-webkit-date-time-edit {
 
 // BANDE/IMAGE SUR COTE DU FORM
 
-.background-with-image-3 {
-  background-position: bottom center;
-  background-size: cover;
-
-}
-
-.card-photo {
+.card-photo-trip {
   position: absolute;
   top: 0;
   left: 0;

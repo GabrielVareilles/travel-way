@@ -1,10 +1,10 @@
-<div class="site-holder form-signup" style="background-image: url(<%= image_path('background.jpg') %>)">
+<div class="site-holder form" style="background-image: url(<%= image_path('background.jpg') %>)">
   <div class="container signup">
     <div class="row">
       <div class="col-sm-offset-4 col-sm-4">
       <h2>Sign up</h2>
         <div class="content-signup">
-          <div class="card-photo background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)"></div>
+          <div class="card-photo-signup background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)"></div>
           <div class="card-form">
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>

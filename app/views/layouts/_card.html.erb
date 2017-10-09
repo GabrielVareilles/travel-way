@@ -1,17 +1,18 @@
 
-<div class="col-md-4 col-sm-6 portfolio print panel hide show" data-toggle="modal" data-target="#porfolio-details-3">
-  <div class="panel-body">
-    <div class="portfolio-title">
-      <div class="portfolio-icon">
-        <div><%= check_box_tag 'trip[activity_ids][]', activity.id %></div>
-      </div>
-      <div class="title">
-        <h4><%= activity.name %></h4>
-        <em><%= activity.description %></em>
+<!-- Make sure the data-target is set to the id of the modal that you would like to open. -->
+<div class="row">
+  <div class="col-md-4 col-sm-6 portfolio web panel" data-toggle="modal" data-target="#porfolio-details-1">
+    <div class="panel-body">
+      <div class="portfolio-title">
+        <div class="portfolio-icon">
+          <div><%= check_box_tag 'trip[activity_ids][]', activity.id %></div>
+        </div>
+        <div class="title">
+          <h4><%= activity.name %></h4>
+          <em>Homepage redesign for a well known brand.</em>
+        </div>
       </div>
     </div>
+    <div class="portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= activity.image_url %>');">
+    </div>
   </div>
-  <div class="portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= activity.image_url %>');">
-  </div>
-</div>
-
