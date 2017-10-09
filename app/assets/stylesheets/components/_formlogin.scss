@@ -2,50 +2,30 @@
   background-position: left 25%;
 }
 
-.content-form-trip {
+.content-login {
   position: relative;
-  height: 44em;
+  height: 22em;
   width: 405px;
   background-color: white;
   border-radius: 6px;
   margin-bottom: 30px;
 }
 
-.container .form-trip {
+.container .login {
   width: 200px;
-}
-
-// DATE INPUTS
-
-input::-webkit-inner-spin-button,
-input::-webkit-clear-button {
-  display: none;
-}
-
-input::-webkit-calendar-picker-indicator {
-  color: grey;
-  opacity: 1;
-}
-
-input::-webkit-calendar-picker-indicator:hover {
-  cursor: pointer;
-}
-
-input::-webkit-date-time-edit {
-  color: red;
+  margin-top: 30px;
 }
 
 // BANDE/IMAGE SUR COTE DU FORM
 
-.card-photo-trip {
+.card-photo-login {
   position: absolute;
   top: 0;
   left: 0;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  height: 44em;
+  height: 22em;
   width: 4%;
-
 }
 
 // FORMULAIRE EN LUI-MÊME
@@ -63,4 +43,9 @@ input::-webkit-date-time-edit {
   position: absolute;
   right: 0;
   width: 100px;
+}
+
+input#user_remember_me.boolean.optional {
+    width: 12px;
+    height: 12px;
 }
