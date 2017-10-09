@@ -1,0 +1,25 @@
+.main-container h1, h5 {
+padding-left: 0px;
+}
+
+// SOUS-TITRE DU FORM
+
+.h-form {
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  margin: -5px 0 20px 0;
+}
+
+// INPUTS
+
+.optional {
+  font-size: 15px;
+}
+
+// BANDE/IMAGE SUR COTE DU FORM
+
+.background-with-image-3 {
+  background-position: bottom center;
+  background-size: cover;
+}

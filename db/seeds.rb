@@ -25,10 +25,11 @@ trip.save
   activity = Activity.new(
     name: activities.sample,
     category: categories.sample,
-    long: 3.066667,
-    lat: 50.633333,
+    latitude: 3.066667,
+    longitude: 50.633333,
     place_name: place.sample,
-    trip: trip
+    trip: trip,
+    address: '16 Villa Gaudelet, Paris'
     )
 activity.save
 end

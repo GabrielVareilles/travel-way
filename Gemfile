@@ -31,3 +31,4 @@ gem 'http'
 gem 'turbolinks', '~> 5.0.0'
 
 gem 'simple-form-datepicker'
+gem "geocoder"
