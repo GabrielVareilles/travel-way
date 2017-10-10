@@ -1,6 +1,6 @@
 class Trip < ApplicationRecord
   #belongs_to :user
-  has_many :activities
+  has_and_belongs_to_many :activities
 
   before_save :remove_blank_places
 
