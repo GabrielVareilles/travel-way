@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009085737) do
+ActiveRecord::Schema.define(version: 20171009155931) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +32,13 @@ ActiveRecord::Schema.define(version: 20171009085737) do
     t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
+  create_table "activities_trips", id: false, force: :cascade do |t|
+    t.bigint "activities_id"
+    t.bigint "trips_id"
+    t.index ["activities_id"], name: "index_activities_trips_on_activities_id"
+    t.index ["trips_id"], name: "index_activities_trips_on_trips_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.bigint "activity_id"
@@ -47,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171009085737) do
     t.string "places", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "activity_ids", default: [], array: true
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
@@ -64,6 +73,13 @@ ActiveRecord::Schema.define(version: 20171009085737) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "provider"
+    t.string "uid"
+    t.string "facebook_picture_url"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
