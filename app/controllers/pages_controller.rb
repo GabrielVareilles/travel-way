@@ -22,12 +22,19 @@ class PagesController < ApplicationController
         category.each do |subcategory|
           results = FetchActivitiesService.new(subcategory, place[:name]).()
           results.map! { |activity| activity.to_h }
-          results.each { |activity| activity[:category] = category[0] }
+          results.each { |activity| activity[:category] = category[0] } # on met les activity sous forme de hash dans results
+          results.each { |activity| activity[:yelp_id] = activity[:id] }
+          results.each { |activity| activity.delete(:id) }
+
+
           place[:activities] << results
         end
-       end
-     end
-     @trip = Trip.new
+        place[:activities].each do |activity|
+          Activity.create(activity)
+        end
+      end
+    end
+    @trip = Trip.new
   end
 
   private
