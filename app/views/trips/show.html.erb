@@ -3,10 +3,11 @@
   <a name="top"></a>
   <div class="main-content container fluid-container">
     <ul id="timeline" class="timeline">
+            <% n = 0 %>
       <% @sliced_activities.each do |activities_per_group| %>
-        <% activities_per_group.each_with_index do |group, index| %>
+        <% activities_per_group.each do |group| %>
           <li>
-            <a name="section-<%= index+1 %>"></a>
+            <a name="section-<%= n += 1 %>"></a>
             <div class="timeline-badge">
             </div>
             <div class="timeline-line">
@@ -20,7 +21,7 @@
                     </div>
                     <% city = group.first.place_name %>
                     <h1><%= city %></h1>
-                    <h5><%= "Day #{index + 1}" %></h5>
+                    <h5><%= "Day #{n}" %></h5>
                     <div class="row">
                       <% group.each_with_index do |activity, ind| %>
                         <div class="col-md-4 col-sm-6 service panel">

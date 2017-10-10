@@ -35,7 +35,7 @@ class PagesController < ApplicationController
           results.each { |activity| activity[:longitude] = activity[:coordinates]['longitude'] }
           results.each { |activity| activity.delete(:coordinates) }
           results.each { |activity| activity[:place_name] = activity[:location]['city'] }
-          results.each { |activity| activity[:place_name] = activity[:location]['display_address'] }
+          results.each { |activity| activity[:display_address] = activity[:location]['display_address'] }
           results.each { |activity| activity.delete(:location) }
 
           place[:activities] << results.flatten
