@@ -29,7 +29,7 @@ class PagesController < ApplicationController
 
           place[:activities] << results
         end
-        place[:activities].each do |activity|
+        place[:activities].map! do |activity|
           Activity.create(activity)
         end
       end
