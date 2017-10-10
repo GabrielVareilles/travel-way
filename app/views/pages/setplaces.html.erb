@@ -15,10 +15,8 @@
                   <%= f.input :start_date, as: :string, input_html: {type: :date}, label: "Start date" %>
                   <%= f.input :end_date, as: :string, input_html: {type: :date}, label: "End date" %>
                   <%= f.input :places, as: :array, placeholder: "Bali", label: "City 1" %>
-                  <%= f.input :places, as: :array, placeholder: "Tokyo", label: "City 2" %>
-                  <%= f.input :places, as: :array, placeholder: "Shanghai", label: "City 3", html: { id: :lastinput} %>
                 </div>
-              <p class="btn btn-primary" id="button"> Add a place </p>
+              <p class="btn btn-primary" id="button"> + </p>
               <%= f.submit "Submit", class: "btn background-1 form-trip" %>
               <%end%>
             </div>

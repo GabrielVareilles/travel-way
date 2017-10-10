@@ -1,4 +1,4 @@
-let city_counter = 3;
+let city_counter = 1;
 
 const button = document.getElementById("button");
 
