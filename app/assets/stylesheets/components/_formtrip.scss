@@ -4,8 +4,8 @@
 
 .content-form-trip {
   position: relative;
-  height: 44em;
   width: 405px;
+  height: 50em;
   background-color: white;
   border-radius: 6px;
   margin-bottom: 30px;
@@ -13,6 +13,10 @@
 
 .container .form-trip {
   width: 200px;
+}
+
+.tripform {
+  margin-bottom: 20px;
 }
 
 // DATE INPUTS
@@ -50,17 +54,11 @@ input::-webkit-date-time-edit {
 
 // FORMULAIRE EN LUI-MÊME
 
-.card-form {
-  position: absolute;
-  top: 22px;
-  right: 38px;
-}
-
 .btn.background-1.form-trip {
   background-color: #ed78a6;
   font-size: 14px;
   padding: 9px;
   position: absolute;
-  right: 0;
+  right: 66px;
   width: 100px;
 }

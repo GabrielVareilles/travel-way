@@ -2,27 +2,30 @@
 
   <div class="container form-trip">
     <div class="row">
-      <div class="col-sm-offset-4 col-sm-4">
+      <div class="col-sm-offset-3 col-sm-6">
 
         <h1>Create your own trip</h1>
         <h2 class="h-form">One period, three cities and here we go...</h2>
-        <div class="content-form-trip">
-          <div class="card-photo-trip background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)"></div>
-            <div class="card-form">
-              <%= simple_form_for @trip, url: setactivities_path do |f| %>
+          <div class="background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)">
+          </div>
+
+          <div class="tripform">
+            <%= simple_form_for @trip, url: setactivities_path do |f| %>
                 <div id="forminputs">
                   <%= f.input :name, placeholder: "Asia 2017", label: "Name your trip" %>
                   <%= f.input :start_date, as: :string, input_html: {type: :date}, label: "Start date" %>
                   <%= f.input :end_date, as: :string, input_html: {type: :date}, label: "End date" %>
-                  <%= f.input :places, as: :array, placeholder: "Bali", label: "City 1" %>
+                  <%= f.input :places, as: :array, placeholder: "New-York", label: "City 1" %>
                 </div>
               <p class="btn btn-primary" id="button"> + </p>
               <%= f.submit "Submit", class: "btn background-1 form-trip" %>
               <%end%>
-            </div>
-        </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
