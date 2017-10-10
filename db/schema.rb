@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009155931) do
-
+ActiveRecord::Schema.define(version: 20171010114945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +28,15 @@ ActiveRecord::Schema.define(version: 20171009155931) do
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.string "yelp_id"
     t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
   create_table "activities_trips", id: false, force: :cascade do |t|
-    t.bigint "activities_id"
-    t.bigint "trips_id"
-    t.index ["activities_id"], name: "index_activities_trips_on_activities_id"
-    t.index ["trips_id"], name: "index_activities_trips_on_trips_id"
+    t.bigint "activity_id"
+    t.bigint "trip_id"
+    t.index ["activity_id"], name: "index_activities_trips_on_activity_id"
+    t.index ["trip_id"], name: "index_activities_trips_on_trip_id"
   end
 
   create_table "places", force: :cascade do |t|
