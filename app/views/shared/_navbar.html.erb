@@ -9,7 +9,7 @@
 
 
     <% if user_signed_in? %>
-      <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
+      <%= link_to "All Trips", "/trips" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
