@@ -1,8 +1,14 @@
+#require_relative '../services/fetch_rome2rio_service.rb'
+require "open-uri"
+require "nokogiri"
+
+
 class PagesController < ApplicationController
   def home
   end
 
   def testapi
+    @results = FetchRome2RioService.new('Lille', 'Lyon').()
   end
 
   def setplaces
@@ -27,4 +33,23 @@ class PagesController < ApplicationController
      end
      @trip = Trip.new
   end
+end
+
+
+
+
+class FetchRome2RioService
+
+  def initialize(startpoint, endpoint)
+    @id = ENV['ROME2RIO_KEY']
+    @startpoint = startpoint
+    @endpoint = endpoint
+  end
+
+  def call
+    url = "http://free.rome2rio.com/api/1.4/json/Search?key=#{@id}&oName=#{@startpoint}&dName=#{@endpoint}"
+    result_serialized = open(url).read
+    @result = JSON.parse(result_serialized)
+  end
+
 end
