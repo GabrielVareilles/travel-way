@@ -43,6 +43,7 @@ class TripsController < ApplicationController
 
   def group_by_place
     @trip.activities.group_by{ |h| h[:place_name] }
+    fail
   end
 
   def slice(group)
