@@ -9,10 +9,11 @@
 
 
     <% if user_signed_in? %>
-      <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
+      <%= link_to "All Trips", "/trips" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <img class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" <%= image_tag "avatar.jpg", id: "avatar" %>
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><a href="#">Profile</a></li>
             <li><%= link_to "Log out", "users/sign_out", :method => :delete%></li>
