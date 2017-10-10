@@ -32,3 +32,12 @@ gem 'turbolinks', '~> 5.0.0'
 
 gem 'simple-form-datepicker'
 gem "geocoder"
+
+#GEOCODER
+
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
