@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  belongs_to :trip
+  has_and_belongs_to_many :projects
   # geocoded_by :display_address
   # after_validation :geocode, if: :display_address_changed?
 end

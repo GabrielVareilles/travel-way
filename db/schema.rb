@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009085737) do
+ActiveRecord::Schema.define(version: 20171009155931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20171009085737) do
     t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
+  create_table "activities_trips", id: false, force: :cascade do |t|
+    t.bigint "activities_id"
+    t.bigint "trips_id"
+    t.index ["activities_id"], name: "index_activities_trips_on_activities_id"
+    t.index ["trips_id"], name: "index_activities_trips_on_trips_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.bigint "activity_id"
@@ -47,6 +54,7 @@ ActiveRecord::Schema.define(version: 20171009085737) do
     t.string "places", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "activity_ids", default: [], array: true
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
