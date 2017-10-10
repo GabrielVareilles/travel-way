@@ -25,7 +25,12 @@ class PagesController < ApplicationController
           results.each { |activity| activity[:category] = category[0] } # on met les activity sous forme de hash dans results
           results.each { |activity| activity[:yelp_id] = activity[:id] }
           results.each { |activity| activity.delete(:id) }
-
+          results.each { |activity| activity[:latitude] = activity[:coordinates]['latitude'] }
+          results.each { |activity| activity[:longitude] = activity[:coordinates]['longitude'] }
+          results.each { |activity| activity.delete(:coordinates) }
+          results.each { |activity| activity[:place_name] = activity[:location]['city'] }
+          results.each { |activity| activity[:place_name] = activity[:location]['display_address'] }
+          results.each { |activity| activity.delete(:location) }
 
           place[:activities] << results
         end

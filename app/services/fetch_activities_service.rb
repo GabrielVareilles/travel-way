@@ -39,7 +39,8 @@ class FetchActivitiesService
 
   def call
     response = HTTP.auth(bearer_token).get(@url, params: @params)
-    result_hash = response.parse['businesses'].map {|business| business.slice('id', 'name', 'place_name', 'display_address', 'display_phone', 'image_url', 'description')  }
+    response.parse['businesses']
+    result_hash = response.parse['businesses'].map {|business| business.slice('id', 'name', 'location', 'display_phone', 'image_url', 'description', 'coordinates') }
     result_hash.map { |h| OpenStruct.new(h) }
   end
 
