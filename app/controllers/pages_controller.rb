@@ -27,10 +27,13 @@ class PagesController < ApplicationController
           results.each { |activity| activity.delete(:id) }
 
 
-          place[:activities] << results
+          place[:activities] << results.flatten
+          place[:activities].flatten!
         end
         place[:activities].map! do |activity|
-          Activity.create(activity)
+          new_activity = Activity.find_or_initialize_by(yelp_id: activity[:yelp_id])
+          new_activity.update_attributes(activity)
+          new_activity
         end
       end
     end
