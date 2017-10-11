@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     @places = []
     @trip = Trip.new(trip_params)
     @params = params
-    params['trip']['places'].each do |place|
+    params['trip']['places'].reject{ |c| c.empty? }.each do |place|
       @places << { name: place, activities: [] }
     end
 
