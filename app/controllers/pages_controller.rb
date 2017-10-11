@@ -54,6 +54,9 @@ class PagesController < ApplicationController
     @trip = Trip.new
   end
 
+  def profile
+  end
+
   private
 
   def trip_params
