@@ -8,5 +8,5 @@ module ActivitiesCategories
   FOOD_RESTAURANT = ["Food", "Restaurants"]
   NIGHTLIFE = ["Nightlife"]
 
-  CATEGORIES = [ACTIVE_LIFE]
+  CATEGORIES = [ACTIVE_LIFE, SHOPPING]
 end
