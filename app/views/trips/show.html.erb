@@ -63,10 +63,10 @@
         <% end %>
       <% end %>
     </ul>
-
      <% @cities.each_with_index do |city, indexcity| %>
                           <% if @cities.size > 1 && indexcity < (@cities.size - 1) %>
                             <% @results = FetchRome2RioService.new(city, "#{@cities[(indexcity + 1)]}").() %>
+                             <% if @results %>
                               <div class="row" >
                                 <div class="col-md-12 col-sm-12 col-lg-12 service panel">
                                   <div class="panel-heading background-with-image-2">
@@ -100,6 +100,7 @@
                                 <%= link_to "Purchase tickets", "https://www.rome2rio.com/fr/s/#{@cities[indexcity]}/#{@cities[indexcity + 1]}", target: "blank", class: "btn btn-primary btn-trip"%>
                                 </div>
                               </div>
+                              <% end %>
                           <% end %>
                           <% end %>
   </div>
