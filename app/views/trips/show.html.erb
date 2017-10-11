@@ -59,7 +59,7 @@
                             </script>
                           <% end %>
                         </div>
-                        <% if @cities.size > 1 %>
+                        <% if @cities.size > 1 && @cities.size < findex %>
                         <% @results = FetchRome2RioService.new("#{@cities[findex]}", "#{@cities[findex + 1]}").() %>
                         <div class="row" >
                           <div class="col-md-12 col-sm-12 col-lg-12 service panel">
