@@ -8,7 +8,6 @@ class PagesController < ApplicationController
   end
 
   def testapi
-    @results = FetchRome2RioService.new('Lille', 'Lyon').()
   end
 
   def setplaces
@@ -55,25 +54,6 @@ class PagesController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:name, :start_date, :end_date, :activity_ids)
-  end
-
-end
-
-
-
-
-class FetchRome2RioService
-
-  def initialize(startpoint, endpoint)
-    @id = ENV['ROME2RIO_KEY']
-    @startpoint = startpoint
-    @endpoint = endpoint
-  end
-
-  def call
-    url = "http://free.rome2rio.com/api/1.4/json/Search?key=#{@id}&oName=#{@startpoint}&dName=#{@endpoint}"
-    result_serialized = open(url).read
-    @result = JSON.parse(result_serialized)
   end
 
 end

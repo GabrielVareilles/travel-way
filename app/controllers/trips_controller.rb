@@ -15,6 +15,7 @@ class TripsController < ApplicationController
       @sliced_activities << slice(activities)
       @hash[city] = set_coords_and_markers(slice(activities))
     end
+    @cities = @hash.keys
   end
 
   def new
@@ -66,4 +67,20 @@ class TripsController < ApplicationController
     end
     markers_hash
   end
+end
+
+class FetchRome2RioService
+
+  def initialize(startpoint, endpoint)
+    @id = ENV['ROME2RIO_KEY']
+    @startpoint = startpoint
+    @endpoint = endpoint
+  end
+
+  def call
+    url = "http://free.rome2rio.com/api/1.4/json/Search?key=#{@id}&oName=#{@startpoint}&dName=#{@endpoint}"
+    result_serialized = open(url).read
+    @result = JSON.parse(result_serialized)
+  end
+
 end
