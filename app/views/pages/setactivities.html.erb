@@ -6,7 +6,7 @@
   <ul id="timeline" class="timeline">
 
    <% @places.each_with_index do |place, i| %>
-   <li>
+   <li id="<%= place[:name] %>">
     <a name="section-<%= i+1 %>"></a>
     <div class="timeline-badge"></div>
     <div class="timeline-line"></div>
@@ -17,8 +17,6 @@
       </div>
 
 
-
-
       <!-- Our Work section -->
       <h1><%= place[:name].capitalize %></h1>
       <h5>Choose your activities for <%= place[:name].capitalize %> among our selection</h5>
@@ -27,8 +25,10 @@
 
         <!-- See the filterPortfolio(...) function in the javacript block at the bottom of the page for an explanation of how this works. -->
         <div class="col-sm-12 portfolio-filters">
-          <button id="allFilter" type="button" class="btn background-black" onclick="filterPortfolio(['active'], 'allFilter')">all</button>
-          <button id="activeFilter" type="button" class="btn background-1" onclick="filterPortfolio(['active'], 'activeFilter')">active</button>
+          <button type="button" class="allFilter btn background-black filter-selected" onclick="filterCategories('<%= place[:name] %>', 'all')">all</button>
+          <% @categories.each do |category| %>
+            <button type="button" class="<%= category %>Filter btn background-1 filter-selected" onclick="filterCategories('<%= place[:name] %>', '<%= category %>')"><%= category %></button>
+          <% end %>
         </div>
       </div>
 
@@ -156,26 +156,20 @@
         This method takes an array of filters plus the button that was pressed.
         Change the classes (web, print, mobile) as required.
         */
-        function filterPortfolio(filters, filterBtn){
-          $('#allFilter').removeClass("filter-selected");
-          $('#activeFilter').removeClass("filter-selected");
-
-          $('.active').removeClass("show");
-
-          for(var i = 0; i < filters.length; i ++){
-            $('.'+filters[i]).addClass("show");
-          }
-
-          if(filterBtn == "allFilter"){
-            $('#allFilter').addClass("filter-selected");
-            $('#activeFilter').addClass("filter-selected");
-          }else{
-            $('#'+filterBtn).addClass("filter-selected");
-          }
-
-        }
-        filterPortfolio(["all", "active"], "allFilter");
-
+      function filterCategories(city, category) {
+        document.querySelectorAll(`#${city} .portfolio-filters button`).forEach((button) => {
+          button.classList.remove("filter-selected");
+        });
+        document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach((button) => {
+          button.classList.add("filter-selected");
+        });
+        document.querySelectorAll(`#${city} .portfolio`).forEach((card) => {
+          card.classList.add("hide");
+        });
+        document.querySelectorAll(`#${city} .${category}`).forEach((card) => {
+          card.classList.remove("hide");
+        });
+      }
 
 
       </script>

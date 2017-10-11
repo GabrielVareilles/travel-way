@@ -40,13 +40,15 @@ class PagesController < ApplicationController
 
           place[:activities] << results.flatten
           place[:activities].flatten!
+
         end
         place[:activities].map! do |activity|
           new_activity = Activity.find_or_initialize_by(yelp_id: activity[:yelp_id])
-          new_activity.update_attributes(activity)
+          new_activity.update_attributes(activity.is_a?(Hash) ? activity : activity.attributes)
           new_activity
         end
       end
+      @categories = place[:activities].map { |h| h[:category] }.uniq
     end
     @trip = Trip.new
   end
