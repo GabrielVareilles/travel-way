@@ -16,6 +16,7 @@ class TripsController < ApplicationController
       @hash[city] = set_coords_and_markers(slice(activities))
     end
     @cities = @hash.keys
+    # cities = { 'Lyon' => result, ........}
   end
 
   def new
