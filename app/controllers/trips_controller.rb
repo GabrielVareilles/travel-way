@@ -77,7 +77,7 @@ class FetchRome2RioService
     @endpoint = endpoint
   end
 
-  def call(startpoint, endpoint)
+  def call
     url = "http://free.rome2rio.com/api/1.4/json/Search?key=#{@id}&oName=#{@startpoint}&dName=#{@endpoint}"
     result_serialized = open(url).read
     @result = JSON.parse(result_serialized)

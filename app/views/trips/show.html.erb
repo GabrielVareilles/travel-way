@@ -66,7 +66,7 @@
 
      <% @cities.each_with_index do |city, indexcity| %>
                           <% if @cities.size > 1 && indexcity < (@cities.size - 1) %>
-                            <% @results = FetchRome2RioService.new(city, "#{@cities[(indexcity + 1)]}").call(city, "#{@cities[(indexcity + 1)]}") %>
+                            <% @results = FetchRome2RioService.new(city, "#{@cities[(indexcity + 1)]}").() %>
                               <div class="row" >
                                 <div class="col-md-12 col-sm-12 col-lg-12 service panel">
                                   <div class="panel-heading background-with-image-2">
