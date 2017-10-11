@@ -1,4 +1,4 @@
-class FetchBusiness
+class FetchReviewssService
 
   API_HOST = "https://api.yelp.com"
   SEARCH_PATH = "/v3/businesses/search"
@@ -16,7 +16,7 @@ class FetchBusiness
   CLIENT_SECRET = ENV['YELP_SECRET']
 
   def initialize(business_id)
-    @url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
+    @url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}/reviews"
 
   end
 
