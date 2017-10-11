@@ -39,11 +39,13 @@ class PagesController < ApplicationController
 
           place[:activities] << results.flatten
           place[:activities].flatten!
+          place[:activities].map! { |activity| activity.is_a?(Hash) ? activity : activity.attributes }
 
         end
         place[:activities].map! do |activity|
           new_activity = Activity.find_or_initialize_by(yelp_id: activity[:yelp_id])
-          new_activity.update_attributes(activity.is_a?(Hash) ? activity : activity.attributes)
+          new_activity.save
+          new_activity.update_attributes(activity)
           new_activity
         end
       end
