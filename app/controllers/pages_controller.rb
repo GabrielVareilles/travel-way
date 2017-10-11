@@ -48,11 +48,20 @@ class PagesController < ApplicationController
           new_activity.update_attributes(activity)
           new_activity
         end
+
       end
       @categories = place[:activities].map { |h| h[:category] }.uniq
     end
     @trip = Trip.new
   end
+
+  # Charlie: Nouvelle methode à appeler dans la boucle de la méthode précédente
+  def findreviews
+    FetchReviewsService.new(activities[:yelp_id]).().each do
+    end
+  end
+
+
 
   private
 
