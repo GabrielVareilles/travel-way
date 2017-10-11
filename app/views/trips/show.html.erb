@@ -4,6 +4,7 @@
   <div class="main-content container fluid-container">
     <ul id="timeline" class="timeline">
             <% n = 0 %>
+    <% @activities_per_place.each_with_index do |activities_per_city, findex| %>
       <% @sliced_activities.each do |activities_per_group| %>
         <% activities_per_group.each do |group| %>
           <li>
@@ -57,10 +58,47 @@
                               });
                             </script>
                           <% end %>
+                        </div>
+                        <% if @cities.size > 1 && @cities.size < findex %>
+                        <% @results = FetchRome2RioService.new("#{@cities[findex]}", "#{@cities[findex + 1]}").() %>
+                        <div class="row" >
+                          <div class="col-md-12 col-sm-12 col-lg-12 service panel">
+                            <div class="panel-heading background-with-image-2">
+                              <div class="panel-icon"><span class="glyphicon glyphicon-transfer"></span>
+                              </div>
+                              <div class="panel-title">
+                                <h4>How can you get to 'CITY2' ?</h4>
+                                <p>There are plenty of ways: </p>
+                              </div>
+                            </div>
+                          <div class="panel-body body-r2r">
+                            <table class="table table-travel">
+                              <% @results['routes'].each do |route| %>
+                              <tbody>
+                                <tr>
+                                  <td><h5><%= route['name'] %></h5></td>
+                                  <td><h6><%= route['totalDuration'].to_i / 60 %>h<%= (route['totalDuration'].to_i % 60) / 01 %></h6></td>
+                                    <% if route['indicativePrices'] %>
+                                      <% if route['indicativePrices'].first['priceLow'] %>
+                                        <td> <h6><%=route['indicativePrices'].first['priceLow'] %> - <%= route['indicativePrices'].first['priceHigh'] %> <%= route['indicativePrices'].first['currency'] %></h6></td>
+                                      <% elsif route['indicativePrices'].first['price'] %>
+                                        <td><h6><%= route['indicativePrices'].first['price']%> <%= route['indicativePrices'].first['currency'] %></h6></td>
+                                      <% end %>
+                                    <% else %>
+                                      <td><h6>N/A</h6></td>
+                                    <% end %>
+                                </tr>
+                              </tbody>
+                              <% end %>
+                            </table>
+                          <%= link_to "Purchase tickets", "https://www.rome2rio.com/fr/s/Lille/Lyon", target: "blank", class: "btn btn-primary btn-trip"%>
+                          </div>
+                        </div>
+                          <% end %>
                     </div>
-                  </div>
-          </li>
+            </li>
         <% end %>
+      <% end %>
       <% end %>
     </ul>
   </div>
