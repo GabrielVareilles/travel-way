@@ -38,7 +38,6 @@ a:hover{
 }
 
 a:visited{
-  color: #ed78a6;
   text-decoration: none;
 }
 
@@ -64,4 +63,12 @@ a:visited{
 
 label.control-label {
   font-size: 15px;
+}
+
+// BUTTONS GENERAL
+
+.btn {
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
 }

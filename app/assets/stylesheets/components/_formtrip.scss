@@ -2,10 +2,14 @@
   background-position: left 25%;
 }
 
+#forminputs {
+  padding-left: 50px;
+  padding-top: 30px;
+}
 .content-form-trip {
   position: relative;
-  width: 405px;
   height: 50em;
+  width: 405px;
   background-color: white;
   border-radius: 6px;
   margin-bottom: 30px;
@@ -17,6 +21,11 @@
 
 .tripform {
   margin-bottom: 20px;
+}
+
+h2.h-form {
+  font-size: 15px;
+  font-style: italic;
 }
 
 // DATE INPUTS
@@ -55,10 +64,18 @@ input::-webkit-date-time-edit {
 // FORMULAIRE EN LUI-MÊME
 
 .btn.background-1.form-trip {
-  background-color: #ed78a6;
+  background-color: #56c2b1;
   font-size: 14px;
   padding: 9px;
   position: absolute;
   right: 66px;
   width: 100px;
+  margin-right: 41px;
+}
+
+.btn.btn-primary.grey {
+  background-color: #e5e5e5;
+  border-color: white;
+  margin-left: 50px;
+  border-radius: 50px;
 }
