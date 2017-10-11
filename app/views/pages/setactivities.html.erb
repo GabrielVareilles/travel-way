@@ -152,6 +152,7 @@
       }
 
 
+
         /*
         This method takes an array of filters plus the button that was pressed.
         Change the classes (web, print, mobile) as required.
@@ -171,20 +172,17 @@
           });
         }
 
-        // let NUMBER_OF_ACTIVITIES = 0;
+        let chosenActivities = 0;
 
-        // const toggleSelectionOfCard = (event) => {
-        //   if (element.classList.contains("selected-card"))
-        //     event.target.classList.remove("hide");
-        //     NUMBER_OF_ACTIVITIES -= 1;
-        //   } else {
-        //     event.target.classList.remove("hide");
-        //     NUMBER_OF_ACTIVITIES += 1;
-        // };
+        function abc(card) {
+          if card.classList.contains("selected-card")
+        };
 
-        // document.querySelectorAll(".portfolio").forEach((card) => {
-        //   card.addEventListener("click", toggleSelectionOfCard)
-        // });
+        document.querySelectorAll(".portfolio").forEach((card) => {
+          card.addEventListener("click", (event) => {
+            card.classList.toggle("hide");
+          });
+        });
 
       </script>
 
