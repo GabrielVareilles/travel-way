@@ -16,7 +16,14 @@ class TripsController < ApplicationController
       @hash[city] = set_coords_and_markers(slice(activities))
     end
     @cities = @hash.keys
-    # cities = { 'Lyon' => result, ........}
+    @travels = {}
+    @cities.each_with_index do |city, indexcity|
+      if @cities.size > 1 && indexcity < (@cities.size - 1)
+        @result = FetchRome2RioService.new(city, "#{@cities[(indexcity + 1)]}").()
+        @travels[city] = @result
+      end
+    end
+      @travels
   end
 
   def new
