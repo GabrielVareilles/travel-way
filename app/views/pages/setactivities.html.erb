@@ -85,7 +85,7 @@
         <div class="col-sm-12 portfolio-filters">
           <button type="button" class="allFilter btn background-black filter-selected" onclick="filterCategories('<%= place[:name] %>', 'all')">all</button>
           <% @categories.each do |category| %>
-            <button type="button" class="<%= category %>Filter btn background-1 filter-selected" onclick="filterCategories('<%= place[:name] %>', '<%= category %>')"><%= category %></button>
+          <button type="button" class="<%= category %>Filter btn background-1 filter-selected" onclick="filterCategories('<%= place[:name] %>', '<%= category %>')"><%= category %></button>
           <% end %>
         </div>
       </div>
@@ -214,21 +214,35 @@
         This method takes an array of filters plus the button that was pressed.
         Change the classes (web, print, mobile) as required.
         */
-      function filterCategories(city, category) {
-        document.querySelectorAll(`#${city} .portfolio-filters button`).forEach((button) => {
-          button.classList.remove("filter-selected");
-        });
-        document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach((button) => {
-          button.classList.add("filter-selected");
-        });
-        document.querySelectorAll(`#${city} .portfolio`).forEach((card) => {
-          card.classList.add("hide");
-        });
-        document.querySelectorAll(`#${city} .${category}`).forEach((card) => {
-          card.classList.remove("hide");
-        });
-      }
+        function filterCategories(city, category) {
+          document.querySelectorAll(`#${city} .portfolio-filters button`).forEach((button) => {
+            button.classList.remove("filter-selected");
+          });
+          document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach((button) => {
+            button.classList.add("filter-selected");
+          });
+          document.querySelectorAll(`#${city} .portfolio`).forEach((card) => {
+            card.classList.add("hide");
+          });
+          document.querySelectorAll(`#${city} .${category}`).forEach((card) => {
+            card.classList.remove("hide");
+          });
+        }
 
+        // let NUMBER_OF_ACTIVITIES = 0;
+
+        // const toggleSelectionOfCard = (event) => {
+        //   if (element.classList.contains("selected-card"))
+        //     event.target.classList.remove("hide");
+        //     NUMBER_OF_ACTIVITIES -= 1;
+        //   } else {
+        //     event.target.classList.remove("hide");
+        //     NUMBER_OF_ACTIVITIES += 1;
+        // };
+
+        // document.querySelectorAll(".portfolio").forEach((card) => {
+        //   card.addEventListener("click", toggleSelectionOfCard)
+        // });
 
       </script>
 
