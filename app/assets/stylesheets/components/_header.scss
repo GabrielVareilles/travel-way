@@ -3,7 +3,10 @@ HEADER AND MENU STYLES
 ************/
 .header {
   background-color: #000;
+<<<<<<< HEAD
   background: no-repeat top center;
+=======
+>>>>>>> 48a424ee98793d9781f97edd503d1974eff11eae
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -14,7 +17,6 @@ HEADER AND MENU STYLES
   margin: 0;
   height: 400px;
 }
-// background-image:
 
 .header .dropdown button{
   background: none;
