@@ -32,9 +32,13 @@
         </div>
       </div>
 
+      <div class="row">
       <% place[:activities].flatten.each do |activity| %>
+
       <%= render "layouts/card", activity: activity %>
+
       <% end %>
+      </div>
 
     </div>
   </div>
@@ -158,29 +162,34 @@
         Change the classes (web, print, mobile) as required.
         */
         function filterCategories(city, category) {
-          document.querySelectorAll(`#${city} .portfolio-filters button`).forEach((button) => {
+          document.querySelectorAll(`#${city} .portfolio-filters button`).forEach(function (button) {
             button.classList.remove("filter-selected");
           });
-          document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach((button) => {
+          document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach(function (button) {
             button.classList.add("filter-selected");
           });
-          document.querySelectorAll(`#${city} .portfolio`).forEach((card) => {
+          document.querySelectorAll(`#${city} .portfolio`).forEach(function (card) {
             card.classList.add("hide");
           });
-          document.querySelectorAll(`#${city} .${category}`).forEach((card) => {
+          document.querySelectorAll(`#${city} .${category}`).forEach(function (card) {
             card.classList.remove("hide");
           });
         }
 
         let chosenActivities = 0;
 
-        function abc(card) {
-          if card.classList.contains("selected-card")
-        };
 
-        document.querySelectorAll(".portfolio").forEach((card) => {
-          card.addEventListener("click", (event) => {
-            card.classList.toggle("hide");
+        document.querySelectorAll(".card-setactivity").forEach(function (card) {
+          card.addEventListener("click", function (event) {
+            if (card.classList.contains("selected-card")) {
+              chosenActivities -= 1;
+              card.classList.remove("selected-card");
+              card.querySelector("input").checked = false;
+            } else {
+              chosenActivities += 1;
+              card.classList.add("selected-card");
+              card.querySelector("input").checked = true;
+            }
           });
         });
 
