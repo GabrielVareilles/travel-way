@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  resources :search, controller: :search, only: :index
+
   # namespace :admin do
     resources :trips do
       resources :activities, only: [:index, :show, :delete]

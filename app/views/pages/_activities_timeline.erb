@@ -1,0 +1,37 @@
+<!-- Main timeline -->
+<ul id="timeline" class="timeline" data-places="<%= places.map{ |p| p[:name] } %>">
+   <% places.each_with_index do |place, i| %>
+     <li id="<%= place[:name] %>">
+      <a name="section-<%= i + 1 %>"></a>
+      <div class="timeline-badge"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-panel">
+        <div class="timeline-body">
+         <div class="top-link">
+          <a href="javascript:void(0);" onclick="scrollToAnchor('top')"><span class="glyphicon glyphicon-menu-up"></span></a>
+        </div>
+
+
+        <!-- Our Work section -->
+        <h1><%= place[:name].capitalize %></h1>
+        <h5>Choose your activities for <%= place[:name].capitalize %> among our selection</h5>
+        <div class="row categories-list">
+          <!-- See the filterPortfolio(...) function in the javacript block at the bottom of the page for an explanation of how this works. -->
+          <div class="col-sm-12 portfolio-filters">
+            <button type="button" class="allFilter btn background-black filter-selected" onclick="filterCategories('<%= place[:name] %>', 'all')">all</button>
+          </div>
+        </div>
+
+        <div class="row activities-list">
+          <%= render('shared/loader') %>
+          <% place[:activities].flatten.each do |activity| %>
+            <%= render "layouts/card", activity: activity %>
+            <%= render "layouts/info-popup", activity: activity %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    </li>
+  <% end %>
+</ul>

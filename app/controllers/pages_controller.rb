@@ -15,45 +15,45 @@ class PagesController < ApplicationController
   end
 
   def setactivities
-    @places = []
     @trip = Trip.new(trip_params)
-    @params = params
-    params['trip']['places'].reject{ |c| c.empty? }.each do |place|
-      @places << { name: place, activities: [] }
+
+    @places = params['trip']['places'].reject{ |p| p.empty? }.map do |place|
+      { name: place, activities: [] }
     end
 
-    @places.each do |place|
-      ActivitiesCategories::CATEGORIES.each do |category|
-        category.each do |subcategory|
-          results = FetchActivitiesService.new(subcategory, place[:name]).()
-          results.map! { |activity| activity.to_h }
-          results.each { |activity| activity[:category] = category[0] } # on met les activity sous forme de hash dans results
-          results.each { |activity| activity[:yelp_id] = activity[:id] }
-          results.each { |activity| activity.delete(:id) }
-          results.each { |activity| activity[:latitude] = activity[:coordinates]['latitude'] }
-          results.each { |activity| activity[:longitude] = activity[:coordinates]['longitude'] }
-          results.each { |activity| activity.delete(:coordinates) }
-          results.each { |activity| activity[:place_name] = activity[:location]['city'] }
-          results.each { |activity| activity[:display_address] = activity[:location]['display_address'] }
-          results.each { |activity| activity.delete(:location) }
-
-          place[:activities] << results.flatten
-          place[:activities].flatten!
-          place[:activities].map! { |activity| activity.is_a?(Hash) ? activity : activity.attributes }
-
-        end
-        place[:activities].map! do |activity|
-          new_activity = Activity.find_or_initialize_by(yelp_id: activity[:yelp_id])
-          new_activity.save
-          new_activity.update_attributes(activity)
-          findreviews(new_activity)
-          new_activity
-        end
-
-      end
-      @categories = place[:activities].map { |h| h[:category] }.uniq
-    end
-    @trip = Trip.new
+    # places.each do |place|
+    #   ActivitiesCategories::CATEGORIES.flatten.each do |category|
+    #       results = FetchActivitiesService.new(category, place[:name]).()
+    #       results.map! do |activity|
+    #         activity['category'] = category
+    #         activity['yelp_id'] = activity['id']
+    #         activity.delete('id')
+    #         activity['latitude'] = activity['coordinates']['latitude']
+    #         activity['longitude'] = activity['coordinates']['longitude']
+    #         activity.delete('coordinates')
+    #         activity['place_name'] = activity['location']['city']
+    #         activity['display_address'] = activity['location']['display_address'].join(' ')
+    #         activity.delete('location')
+    #         activity
+    #       end
+    #
+    #       place[:activities] += results
+    #   end
+    # end
+    #
+    # yelp_ids = []
+    # Activity.bulk_insert(ignore: true) do |worker|
+    #   @categories = places.each_with_object([]) do |place, o|
+    #     o << place[:activities].map do |activity|
+    #       worker.add(activity)
+    #       yelp_ids << activity['yelp_id']
+    #       activity['category']
+    #     end
+    #   end.first.uniq
+    # end
+    #
+    # @places = Activity.where(yelp_id: yelp_ids).group_by { |a| a['place_name'] }
+    # @trip = Trip.new
   end
 
   # Charlie: Nouvelle methode à appeler dans la boucle de la méthode précédente
