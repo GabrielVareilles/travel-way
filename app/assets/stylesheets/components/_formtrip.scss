@@ -15,6 +15,11 @@
   border-radius: 6px;
   margin-bottom: 30px;
   padding-right: 35px;
+  border-left-style: solid;
+  border-left-color: rgb(111, 198, 217);
+  border-left-width: 15px;
+  min-height: 460px;
+
 }
 
 .tripform {
@@ -76,4 +81,23 @@ input::-webkit-date-time-edit {
   border-color: white;
   margin-left: 50px;
   border-radius: 50px;
+}
+
+.sub-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-setplaces {
+  padding: 5px;
+}
+
+.panel-body-setplaces {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.title-right {
+  height: 115px;
+  width: 220px;
 }
