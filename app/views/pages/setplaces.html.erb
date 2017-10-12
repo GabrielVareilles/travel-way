@@ -16,16 +16,6 @@
       <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
           <div class="tripform">
-            <%= simple_form_for @trip, url: setactivities_path, method: :get do |f| %>
-                <div id="forminputs">
-                  <%= f.input :name, input_html: {require: true}, placeholder: "Asia 2017", label: "Name your trip" %>
-                  <%= f.input :start_date, as: :string, input_html: {type: :date}, label: "Start date" %>
-                  <%= f.input :end_date, as: :string, input_html: {type: :date}, label: "End date" %>
-                  <%= f.input :places, as: :array, placeholder: "New-York", label: "City 1" %>
-                </div>
-              <p class="btn btn-primary grey" id="button"> + </p>
-              <%= f.submit "Submit", class: "btn background-1 form-trip" %>
-              <%end%>
           <h1>Create your own trip</h1>
           <h2 class="h-form">One period, three cities and here we go...</h2>
           <div class="content-form-trip">
@@ -33,7 +23,7 @@
             </div>
 
             <div class="tripform">
-              <%= simple_form_for @trip, url: setactivities_path do |f| %>
+              <%= simple_form_for @trip, url: setactivities_path, method: :get do |f| %>
                   <div id="forminputs">
                     <%= f.input :name, input_html: {require: true}, placeholder: "Asia 2017", label: "Name your trip" %>
                     <%= f.input :start_date, as: :string, input_html: {type: :date}, label: "Start date" %>
