@@ -127,12 +127,7 @@ end
 #        }
 #
 # Returns a parsed json object of the request
-def business(business_id)
-  url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
 
-  response = HTTP.auth(bearer_token).get(url)
-  response.parse
-end
 
 
 options = {}
