@@ -1,3 +1,5 @@
+<!-- HEADER -->
+
 <div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
   <div class="container fluid-container header-content content-area">
     <span class="header-icon glyphicon glyphicon-heart-empty"></span>
@@ -8,26 +10,50 @@
   </div>
 </div>
 
-<div class="header-menu-content">
+<!-- Mobile menu dropdown -->
+<div class="mobile-header-menu">
   <div class="menu-logo">
-    <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+      <span class="header-icon glyphicon glyphicon-heart-empty"></span>
   </div>
-  <ul>
-    <% @sliced_activities.each do |activities_per_group| %>
-      <% activities_per_group.each_with_index do |group, index| %>
-        <li>
-          <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
-        </li>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      <span class="glyphicon glyphicon-menu-hamburger color-1"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+      <% @sliced_activities.each do |activities_per_group| %>
+        <% activities_per_group.each_with_index do |group, index| %>
+          <li>
+            <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
+</div>
+
+<!-- Desktop menu -->
+<div class="header-menu container fluid-container content-area">
+  <div class="header-menu-content">
+    <div class="menu-logo">
+      <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+    </div>
+    <ul>
+      <% @sliced_activities.each do |activities_per_group| %>
+        <% activities_per_group.each_with_index do |group, index| %>
+          <li>
+            <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <div class="main-content container fluid-container">
 
   <h1>Your trip: <%= @trip.name %></h1>
     <ul id="timeline" class="timeline">
-            <% n = 0 %>
+      <% n = 0 %>
       <% @sliced_activities.each do |activities_per_group| %>
         <% activities_per_group.each do |group| %>
           <li>
@@ -246,48 +272,6 @@
         <% end %>
       <% end %>
     </ul>
-
-    <% @cities.each_with_index do |city, indexcity| %>
-      <% if @cities.size > 1 && indexcity < (@cities.size - 1) %>
-        <% @results = FetchRome2RioService.new(city, "#{@cities[(indexcity + 1)]}").() %>
-          <% if @results %>
-            <div class="row" >
-              <div class="col-md-12 col-sm-12 col-lg-12 service panel">
-                <div class="panel-heading background-with-image-2">
-                  <div class="panel-icon"><span class="glyphicon glyphicon-transfer"></span></div>
-                    <div class="panel-title">
-                      <h4>How can you get from <%= city %> to <%= @cities[(indexcity + 1)] %>?</h4>
-                      <p>There are plenty of ways: </p>
-                    </div>
-                  </div>
-                  <div class="panel-body body-r2r">
-                    <table class="table table-travel">
-                      <% @results['routes'].each do |route| %>
-                        <tbody>
-                          <tr>
-                            <td><h5><%= route['name'] %></h5></td>
-                            <td><h6><%= route['totalDuration'].to_i / 60 %>h<%= (route['totalDuration'].to_i % 60) / 01 %></h6></td>
-                              <% if route['indicativePrices'] %>
-                                  <% if route['indicativePrices'].first['priceLow'] %>
-                                    <td> <h6><%=route['indicativePrices'].first['priceLow'] %> - <%= route['indicativePrices'].first['priceHigh'] %> <%= route['indicativePrices'].first['currency'] %></h6></td>
-                                  <% elsif route['indicativePrices'].first['price'] %>
-                                      <td><h6><%= route['indicativePrices'].first['price']%> <%= route['indicativePrices'].first['currency'] %></h6></td>
-                                  <% end %>
-                              <% else %>
-                                <td><h6>N/A</h6></td>
-                              <% end %>
-                          </tr>
-                        </tbody>
-                      <% end %>
-                    </table>
-                      <%= link_to "Purchase tickets", "https://www.rome2rio.com/fr/s/#{@cities[indexcity]}/#{@cities[indexcity + 1]}", target: "blank", class: "btn btn-primary btn-trip"%>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
-      <% end %>
-    <% end %>
 
 </div>
 
