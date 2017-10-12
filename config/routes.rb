@@ -12,5 +12,6 @@ Rails.application.routes.draw do
      get '/setplaces', to: 'pages#setplaces'
      get '/setactivities', to: 'pages#setactivities'
      get '/testapi', to: "pages#testapi"
+     get '/profile', to: "pages#profile"
    end
 # end
