@@ -1,0 +1,10 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+
+  > i {
+    font-size: 10rem;
+    color: #56c2b1;
+  }
+}

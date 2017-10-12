@@ -1,5 +1,5 @@
 <!-- Header section. Update the background by changing the .header class background image. -->
-<div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
+<div class="header" style="background-image: url(<%= image_path('header2.jpg') %>)">
   <div class="container fluid-container header-content content-area">
     <span class="header-icon glyphicon glyphicon-heart-empty"></span>
     <div class="header-title">
@@ -49,199 +49,149 @@
 <%= simple_form_for(@trip) do |f| %>
 
 <div class="main-content container fluid-container">
-
-  <!-- Main timeline -->
-  <ul id="timeline" class="timeline">
-
-   <% @places.each_with_index do |place, i| %>
-   <li id="<%= place[:name] %>">
-    <a name="section-<%= i+1 %>"></a>
-    <div class="timeline-badge"></div>
-    <div class="timeline-line"></div>
-    <div class="timeline-panel">
-      <div class="timeline-body">
-       <div class="top-link">
-        <a href="javascript:void(0);" onclick="scrollToAnchor('top')"><span class="glyphicon glyphicon-menu-up"></span></a>
-      </div>
-
-
-      <!-- Our Work section -->
-      <h1><%= place[:name].capitalize %></h1>
-      <h5>Choose your activities for <%= place[:name].capitalize %> among our selection</h5>
-      <div class="row">
-
-
-        <!-- See the filterPortfolio(...) function in the javacript block at the bottom of the page for an explanation of how this works. -->
-        <div class="col-sm-12 portfolio-filters">
-          <button type="button" class="allFilter btn background-black filter-selected" onclick="filterCategories('<%= place[:name] %>', 'all')">all</button>
-          <% @categories.each do |category| %>
-          <button type="button" class="<%= category %>Filter btn background-1 filter-selected" onclick="filterCategories('<%= place[:name] %>', '<%= category %>')"><%= category %></button>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="row">
-      <% place[:activities].flatten.each do |activity| %>
-
-      <%= render "layouts/card", activity: activity %>
-      <%= render "layouts/info-popup", activity: activity %>
-      <% end %>
-      </div>
-
-    </div>
-  </div>
-
-</li>
-
-
-
-<% end %>
-</ul>
-
+  <%= render 'pages/activities_timeline', places: @places %>
 </div>
 
 
-<%= hidden_field_tag 'trip[name]', @params['trip']['name'] %>
-<%= hidden_field_tag 'trip[start_date]', @params['trip']['start_date'] %>
-<%= hidden_field_tag 'trip[end_date]', @params['trip']['end_date'] %>
+<%= hidden_field_tag 'trip[name]', params['trip']['name'] %>
+<%= hidden_field_tag 'trip[start_date]', params['trip']['start_date'] %>
+<%= hidden_field_tag 'trip[end_date]', params['trip']['end_date'] %>
 
 <%= f.button :submit %>
 
-<% end # end of form%>
+<% end %>
 
 
-    <!-- JavaScript
-    ================================================== -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- JavaScript
+================================================== -->
 
-    <script type="text/javascript">
-      $( document ).ready(function() {
+<% content_for :after_js do %>
+  <script type="text/javascript">
+  $( document ).ready(function() {
 
-        var numItems = $('#timeline .timeline-badge').length;
-        var gradientColours = "";
+    var numItems = $('#timeline .timeline-badge').length;
+    var gradientColours = "";
 
-        for(var i = 0; i < numItems; i ++){
-          if(i > 0) gradientColours += ", ";
-          var badgeClass  = "";
-          var lineClass  = "";
+    for(var i = 0; i < numItems; i ++){
+      if(i > 0) gradientColours += ", ";
+      var badgeClass  = "";
+      var lineClass  = "";
 
-            // change the gradientColours value as required. Also see badgeClass and lineClass in css/styles.css
-            if((i+1) % 4 == 0){
-              badgeClass  = "badge-4";
-              lineClass  = "line-4";
-              gradientColours += "#70c6da";
-            }else if((i+1) % 3 == 0){
-              badgeClass  = "badge-3";
-              lineClass  = "line-3";
-              gradientColours += "#6fc6d9";
-            }else if((i+1) % 2 == 0){
-              badgeClass  = "badge-2";
-              lineClass  = "line-2";
-              gradientColours += "#56c2b1";
-            }else{
-              badgeClass  = "badge-1";
-              lineClass  = "line-1";
-              gradientColours += "#ed78a6";
-            }
-            if(i < numItems -1){
-              ($('#timeline .timeline-line').eq(i)).addClass(lineClass);
-            }
-            ($('#timeline .timeline-badge').eq(i)).addClass(badgeClass);
-          }
-
-          var styleString = "<style>";
-          styleString += ".timeline:before{background: -webkit-linear-gradient('+gradientColours+');background: -o-linear-gradient('+gradientColours+'); background: -moz-linear-gradient('+gradientColours+'); background: linear-gradient('+gradientColours+')}";
-          styleString += "</style>";
-
-          $('head').append(styleString);
-
-
-          // Sticky Menu
-          var stickyNavTop = $('.header-menu').offset().top + 30;
-          var stickyNavTopMobile = $('.mobile-header-menu').offset().top + 10;
-          var stickyNav = function(){
-            var scrollTop = $(window).scrollTop();
-
-            if(scrollTop > stickyNavTopMobile) {
-              $('.mobile-header-menu').addClass('mobile-sticky');
-              $('.mobile-header-menu .menu-logo').addClass('show');
-            }else{
-              $('.mobile-header-menu').removeClass('mobile-sticky');
-              $('.mobile-header-menu .menu-logo').removeClass('show');
-            }
-
-            if (scrollTop > stickyNavTop) {
-              $('.header-menu').addClass('sticky');
-              $('.header-menu-content').addClass('header-menu-content-sticky');
-              $('.header-menu').removeClass('container');
-              $('.header-menu').removeClass('fluid-container');
-              $('.header-menu').removeClass('content-area');
-              $('.header-menu-content .menu-logo').addClass('show');
-
-            } else {
-              $('.header-menu').removeClass('sticky');
-              $('.header-menu-content').removeClass('header-menu-content-sticky');
-              $('.header-menu').addClass('container');
-              $('.header-menu').addClass('fluid-container');
-              $('.header-menu').addClass('content-area');
-              $('.header-menu-content .menu-logo').removeClass('show');
-
-            }
-          };
-
-          stickyNav();
-
-          $(window).scroll(function() {
-            stickyNav();
-          });
-
-        });
-
-      function scrollToAnchor(aid){
-        var aTag = $("a[name='"+ aid +"']");
-        $('html,body').animate({scrollTop: aTag.offset().top-80},'slow');
+        // change the gradientColours value as required. Also see badgeClass and lineClass in css/styles.css
+        if((i+1) % 4 == 0){
+          badgeClass  = "badge-4";
+          lineClass  = "line-4";
+          gradientColours += "#70c6da";
+        }else if((i+1) % 3 == 0){
+          badgeClass  = "badge-3";
+          lineClass  = "line-3";
+          gradientColours += "#6fc6d9";
+        }else if((i+1) % 2 == 0){
+          badgeClass  = "badge-2";
+          lineClass  = "line-2";
+          gradientColours += "#56c2b1";
+        }else{
+          badgeClass  = "badge-1";
+          lineClass  = "line-1";
+          gradientColours += "#ed78a6";
+        }
+        if(i < numItems -1){
+          ($('#timeline .timeline-line').eq(i)).addClass(lineClass);
+        }
+        ($('#timeline .timeline-badge').eq(i)).addClass(badgeClass);
       }
 
+      var styleString = "<style>";
+      styleString += ".timeline:before{background: -webkit-linear-gradient('+gradientColours+');background: -o-linear-gradient('+gradientColours+'); background: -moz-linear-gradient('+gradientColours+'); background: linear-gradient('+gradientColours+')}";
+      styleString += "</style>";
+
+      $('head').append(styleString);
 
 
-        /*
-        This method takes an array of filters plus the button that was pressed.
-        Change the classes (web, print, mobile) as required.
-        */
-        function filterCategories(city, category) {
-          document.querySelectorAll(`#${city} .portfolio-filters button`).forEach(function (button) {
-            button.classList.remove("filter-selected");
-          });
-          document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach(function (button) {
-            button.classList.add("filter-selected");
-          });
-          document.querySelectorAll(`#${city} .portfolio`).forEach(function (card) {
-            card.classList.add("hide");
-          });
-          document.querySelectorAll(`#${city} .${category}`).forEach(function (card) {
-            card.classList.remove("hide");
-          });
+      // Sticky Menu
+      var stickyNavTop = $('.header-menu').offset().top + 30;
+      var stickyNavTopMobile = $('.mobile-header-menu').offset().top + 10;
+      var stickyNav = function(){
+        var scrollTop = $(window).scrollTop();
+
+        if(scrollTop > stickyNavTopMobile) {
+          $('.mobile-header-menu').addClass('mobile-sticky');
+          $('.mobile-header-menu .menu-logo').addClass('show');
+        }else{
+          $('.mobile-header-menu').removeClass('mobile-sticky');
+          $('.mobile-header-menu .menu-logo').removeClass('show');
         }
 
-        let chosenActivities = 0;
+        if (scrollTop > stickyNavTop) {
+          $('.header-menu').addClass('sticky');
+          $('.header-menu-content').addClass('header-menu-content-sticky');
+          $('.header-menu').removeClass('container');
+          $('.header-menu').removeClass('fluid-container');
+          $('.header-menu').removeClass('content-area');
+          $('.header-menu-content .menu-logo').addClass('show');
+
+        } else {
+          $('.header-menu').removeClass('sticky');
+          $('.header-menu-content').removeClass('header-menu-content-sticky');
+          $('.header-menu').addClass('container');
+          $('.header-menu').addClass('fluid-container');
+          $('.header-menu').addClass('content-area');
+          $('.header-menu-content .menu-logo').removeClass('show');
+
+        }
+      };
+
+      stickyNav();
+
+      $(window).scroll(function() {
+        stickyNav();
+      });
+
+    });
+
+  function scrollToAnchor(aid){
+    var aTag = $("a[name='"+ aid +"']");
+    $('html,body').animate({scrollTop: aTag.offset().top-80},'slow');
+  }
 
 
-        document.querySelectorAll(".card-setactivity").forEach(function (card) {
-          card.addEventListener("click", function (event) {
-            if (card.classList.contains("selected-card")) {
-              chosenActivities -= 1;
-              card.classList.remove("selected-card");
-              card.querySelector("input").checked = false;
-            } else {
-              chosenActivities += 1;
-              card.classList.add("selected-card");
-              card.querySelector("input").checked = true;
-            }
-          });
-        });
 
-      </script>
+    /*
+    This method takes an array of filters plus the button that was pressed.
+    Change the classes (web, print, mobile) as required.
+    */
+    function filterCategories(city, category) {
+      document.querySelectorAll(`#${city} .portfolio-filters button`).forEach(function (button) {
+        button.classList.remove("filter-selected");
+      });
+      document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach(function (button) {
+        button.classList.add("filter-selected");
+      });
+      document.querySelectorAll(`#${city} .portfolio`).forEach(function (card) {
+        card.classList.add("hide");
+      });
+      document.querySelectorAll(`#${city} .${category}`).forEach(function (card) {
+        card.classList.remove("hide");
+      });
+    }
 
-    </body>
-    </html>
+    let chosenActivities = 0;
+
+
+    document.querySelectorAll(".card-setactivity").forEach(function (card) {
+      card.addEventListener("click", function (event) {
+        if (card.classList.contains("selected-card")) {
+          chosenActivities -= 1;
+          card.classList.remove("selected-card");
+          card.querySelector("input").checked = false;
+        } else {
+          chosenActivities += 1;
+          card.classList.add("selected-card");
+          card.querySelector("input").checked = true;
+        }
+      });
+    });
+  </script>
+
+</body>
+<% end %>
