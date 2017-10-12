@@ -5,7 +5,7 @@ function cardTemplate (activity) {
         <div class="panel-body">
           <div class="portfolio-title">
             <div class="portfolio-icon">
-              <div><input type="checkbox" name="trip[activity_ids][] value="${activity.id}"></div>
+              <div><input type="checkbox" name="trip[activity_ids][]" value="${activity.id}"></div>
             </div>
             <div class="title">
               <h4>${activity.name}</h4>
