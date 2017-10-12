@@ -1,12 +1,12 @@
 module ActivitiesCategories
 
   ACTIVE_LIFE = ["active"]
-  ARTS_ENTERTAINMENT = ["Arts", "Entertainment", "Mass Media", "Education", "Religious Organizations"]
-  BEAUTY_RELAXATION = ["Beauty & Spas "]
+  ARTS_ENTERTAINMENT = ["arts", "massmedia", "education", "religiousorgs"]
+  BEAUTY_RELAXATION = ["beautysvc"]
   SHOPPING = ["shopping"]
   HOTELS_TRAVEL = ["hotelstravel"]
-  FOOD_RESTAURANT = ["Food", "Restaurants"]
-  NIGHTLIFE = ["Nightlife"]
+  FOOD_RESTAURANT = ["food", "restaurants"]
+  NIGHTLIFE = ["nightlife"]
 
-  CATEGORIES = [ACTIVE_LIFE, SHOPPING]
+  CATEGORIES = [ACTIVE_LIFE, ARTS_ENTERTAINMENT, SHOPPING, FOOD_RESTAURANT, NIGHTLIFE]
 end

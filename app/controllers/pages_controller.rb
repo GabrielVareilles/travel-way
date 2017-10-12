@@ -22,36 +22,42 @@ class PagesController < ApplicationController
       @places << { name: place, activities: [] }
     end
 
+    Activity.bulk_insert(ignore: true) do |worker|
     @places.each do |place|
       ActivitiesCategories::CATEGORIES.each do |category|
         category.each do |subcategory|
           results = FetchActivitiesService.new(subcategory, place[:name]).()
-          results.map! { |activity| activity.to_h }
-          results.each { |activity| activity[:category] = category[0] } # on met les activity sous forme de hash dans results
-          results.each { |activity| activity[:yelp_id] = activity[:id] }
-          results.each { |activity| activity.delete(:id) }
-          results.each { |activity| activity[:latitude] = activity[:coordinates]['latitude'] }
-          results.each { |activity| activity[:longitude] = activity[:coordinates]['longitude'] }
-          results.each { |activity| activity.delete(:coordinates) }
-          results.each { |activity| activity[:place_name] = activity[:location]['city'] }
-          results.each { |activity| activity[:display_address] = activity[:location]['display_address'] }
-          results.each { |activity| activity.delete(:location) }
+          #results.map! { |activity| activity.to_h }
+          results.map! do |activity|
+            activity['category'] = category[0]
+            activity['yelp_id'] = activity['id']
+            activity.delete('id')
+            activity['latitude'] = activity['coordinates']['latitude']
+            activity['longitude'] = activity['coordinates']['longitude']
+            activity.delete('coordinates')
+            activity['place_name'] = activity['location']['city']
+            activity['display_address'] = activity['location']['display_address'].join(' ')
+            activity.delete('location')
+            activity
+          end
 
+          place[:activities].map! { |activity| activity.is_a?(Hash) ? activity : activity.attributes }
           place[:activities] << results.flatten
           place[:activities].flatten!
-          place[:activities].map! { |activity| activity.is_a?(Hash) ? activity : activity.attributes }
-
-        end
-        place[:activities].map! do |activity|
-          new_activity = Activity.find_or_initialize_by(yelp_id: activity[:yelp_id])
-          new_activity.save
-          new_activity.update_attributes(activity)
-          findreviews(new_activity)
-          new_activity
         end
 
+        yelp_ids = []
+
+          place[:activities].each do |activity|
+            worker.add(activity)
+            yelp_ids << activity['yelp_id']
+          end
+
+        place[:activities] = Activity.where(yelp_id: yelp_ids).to_a
       end
-      @categories = place[:activities].map { |h| h[:category] }.uniq
+
+      @categories = place[:activities].map { |h| h['category'] }.uniq
+    end
     end
     @trip = Trip.new
   end
