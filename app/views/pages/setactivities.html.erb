@@ -1,3 +1,49 @@
+<!-- Header section. Update the background by changing the .header class background image. -->
+<div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
+  <div class="container fluid-container header-content content-area">
+    <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+    <div class="header-title">
+      <h1>Our top selection</h1>
+      <h3>Choose the activities that fit you perfectly...</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile menu dropdown -->
+<div class="mobile-header-menu">
+  <div class="menu-logo">
+      <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      <span class="glyphicon glyphicon-menu-hamburger color-1"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+      <% @places.each_with_index do |place, index|%>
+        <li>
+          <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= place[:name] %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- Desktop menu -->
+<div class="container fluid-container content-area header-menu">
+  <div class="header-menu-content">
+    <div class="menu-logo">
+      <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+    </div>
+    <ul>
+      <% @places.each_with_index do |place, index|%>
+        <li>
+          <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= place[:name] %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <%= simple_form_for(@trip) do |f| %>
 
 <div class="main-content container fluid-container">
@@ -27,15 +73,17 @@
         <div class="col-sm-12 portfolio-filters">
           <button type="button" class="allFilter btn background-black filter-selected" onclick="filterCategories('<%= place[:name] %>', 'all')">all</button>
           <% @categories.each do |category| %>
-            <button type="button" class="<%= category %>Filter btn background-1 filter-selected" onclick="filterCategories('<%= place[:name] %>', '<%= category %>')"><%= category %></button>
+          <button type="button" class="<%= category %>Filter btn background-1 filter-selected" onclick="filterCategories('<%= place[:name] %>', '<%= category %>')"><%= category %></button>
           <% end %>
         </div>
       </div>
 
+      <div class="row">
       <% place[:activities].flatten.each do |activity| %>
+
       <%= render "layouts/card", activity: activity %>
-      <%= activity.reviews %>
       <% end %>
+      </div>
 
     </div>
   </div>
@@ -153,25 +201,42 @@
       }
 
 
+
         /*
         This method takes an array of filters plus the button that was pressed.
         Change the classes (web, print, mobile) as required.
         */
-      function filterCategories(city, category) {
-        document.querySelectorAll(`#${city} .portfolio-filters button`).forEach((button) => {
-          button.classList.remove("filter-selected");
-        });
-        document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach((button) => {
-          button.classList.add("filter-selected");
-        });
-        document.querySelectorAll(`#${city} .portfolio`).forEach((card) => {
-          card.classList.add("hide");
-        });
-        document.querySelectorAll(`#${city} .${category}`).forEach((card) => {
-          card.classList.remove("hide");
-        });
-      }
+        function filterCategories(city, category) {
+          document.querySelectorAll(`#${city} .portfolio-filters button`).forEach(function (button) {
+            button.classList.remove("filter-selected");
+          });
+          document.querySelectorAll(`#${city} .portfolio-filters .${category}Filter`).forEach(function (button) {
+            button.classList.add("filter-selected");
+          });
+          document.querySelectorAll(`#${city} .portfolio`).forEach(function (card) {
+            card.classList.add("hide");
+          });
+          document.querySelectorAll(`#${city} .${category}`).forEach(function (card) {
+            card.classList.remove("hide");
+          });
+        }
 
+        let chosenActivities = 0;
+
+
+        document.querySelectorAll(".card-setactivity").forEach(function (card) {
+          card.addEventListener("click", function (event) {
+            if (card.classList.contains("selected-card")) {
+              chosenActivities -= 1;
+              card.classList.remove("selected-card");
+              card.querySelector("input").checked = false;
+            } else {
+              chosenActivities += 1;
+              card.classList.add("selected-card");
+              card.querySelector("input").checked = true;
+            }
+          });
+        });
 
       </script>
 

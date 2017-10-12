@@ -1,33 +1,44 @@
-<div class="site-holder form" style="background-image: url(<%= image_path('background.jpg') %>)">
 
-  <div class="container form-trip">
-    <div class="row">
-      <div class="col-sm-offset-3 col-sm-6">
-
-        <h1>Create your own trip</h1>
-        <h2 class="h-form">One period, three cities and here we go...</h2>
-        <div class="content-form-trip">
-          <div class="card-photo-login background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)">
-          </div>
-
-          <div class="tripform">
-            <%= simple_form_for @trip, url: setactivities_path do |f| %>
-                <div id="forminputs">
-                  <%= f.input :name, input_html: {require: true}, placeholder: "Asia 2017", label: "Name your trip" %>
-                  <%= f.input :start_date, as: :string, input_html: {type: :date}, label: "Start date" %>
-                  <%= f.input :end_date, as: :string, input_html: {type: :date}, label: "End date" %>
-                  <%= f.input :places, as: :array, placeholder: "New-York", label: "City 1" %>
-                </div>
-              <p class="btn btn-primary grey" id="button"> + </p>
-              <%= f.submit "Submit", class: "btn background-1 form-trip" %>
-              <%end%>
-          </div>
-        </div>
-      </div>
+      <!-- Header section. Update the background by changing the .header class background image. -->
+<div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
+  <div class="container fluid-container header-content content-area">
+    <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+    <div class="header-title">
+      <h1>Where do you want to go?</h1>
+      <h3>Choose the cities, we do the rest...</h3>
     </div>
   </div>
 </div>
 
+<div class="main-content container fluid-container">
 
+    <div class="form-trip">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+          <div class="tripform">
+          <h1>Create your own trip</h1>
+          <h2 class="h-form">One period, three cities and here we go...</h2>
+          <div class="content-form-trip">
+            <div class="card-photo-login background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)">
+            </div>
+
+            <div class="tripform">
+              <%= simple_form_for @trip, url: setactivities_path, method: :get do |f| %>
+                  <div id="forminputs">
+                    <%= f.input :name, input_html: {require: true}, placeholder: "Asia 2017", label: "Name your trip" %>
+                    <%= f.input :start_date, as: :string, input_html: {type: :date}, label: "Start date" %>
+                    <%= f.input :end_date, as: :string, input_html: {type: :date}, label: "End date" %>
+                    <%= f.input :places, as: :array, placeholder: "New-York", label: "City 1" %>
+                  </div>
+                <p class="btn btn-primary grey" id="button"> + </p>
+                <%= f.submit "Submit", class: "btn background-1 form-trip" %>
+                <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
 
 

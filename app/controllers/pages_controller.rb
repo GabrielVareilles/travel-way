@@ -70,6 +70,9 @@ class PagesController < ApplicationController
 
 
 
+  def profile
+  end
+
   private
 
   def trip_params
