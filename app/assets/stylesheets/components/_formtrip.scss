@@ -8,11 +8,13 @@
 }
 .content-form-trip {
   position: relative;
-  height: 50em;
-  width: 405px;
+  overflow:auto;
+  transition:height 1s ease;
+  width: 415px;
   background-color: white;
   border-radius: 6px;
   margin-bottom: 30px;
+  padding-right: 35px;
 }
 
 .tripform {
