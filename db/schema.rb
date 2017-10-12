@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012092907) do
+ActiveRecord::Schema.define(version: 20171012120757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171012092907) do
     t.string "address"
     t.string "yelp_id"
     t.text "reviews"
+    t.index ["yelp_id"], name: "index_activities_on_yelp_id", unique: true
   end
 
   create_table "activities_trips", id: false, force: :cascade do |t|
