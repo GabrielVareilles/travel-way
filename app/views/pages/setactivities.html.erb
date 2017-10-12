@@ -1,3 +1,61 @@
+<div class="site-holder">
+  <a name="top"></a>
+  <!-- Header section. Update the background by changing the .header class background image. -->
+  <div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
+    <div class="container fluid-container header-content content-area">
+      <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+      <div class="header-title">
+        <h1>Our top selection</h1>
+        <h3>Choose the activities that fit you perfectly...</h3>
+      </div>
+    </div>
+  </div>
+
+      <!-- Mobile menu dropdown -->
+      <div class="mobile-header-menu">
+        <div class="menu-logo">
+            <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <span class="glyphicon glyphicon-menu-hamburger color-1"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+            <li>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-1')">What We Do</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-2')">Meet the Team</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-3')">Our Work</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-4')">Contact</a>
+            </li>
+            <li>
+              <a href="dark/index.html" >Black Wolf</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Desktop menu -->
+      <div class="container fluid-container content-area header-menu">
+        <div class="header-menu-content">
+          <div class="menu-logo">
+            <span class="header-icon glyphicon glyphicon-heart-empty"></span>
+          </div>
+          <ul>
+            <% @places.each_with_index do |place, index|%>
+              <li>
+                <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= place[:name] %></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
 <%= simple_form_for(@trip) do |f| %>
 
 <div class="main-content container fluid-container">
