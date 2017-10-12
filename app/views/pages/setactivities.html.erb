@@ -44,6 +44,8 @@
   </div>
 </div>
 
+
+
 <%= simple_form_for(@trip) do |f| %>
 
 <div class="main-content container fluid-container">
@@ -82,6 +84,7 @@
       <% place[:activities].flatten.each do |activity| %>
 
       <%= render "layouts/card", activity: activity %>
+      <%= render "layouts/info-popup", activity: activity %>
       <% end %>
       </div>
 
