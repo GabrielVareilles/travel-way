@@ -46,13 +46,29 @@ class PagesController < ApplicationController
           new_activity = Activity.find_or_initialize_by(yelp_id: activity[:yelp_id])
           new_activity.save
           new_activity.update_attributes(activity)
+          findreviews(new_activity)
           new_activity
         end
+
       end
       @categories = place[:activities].map { |h| h[:category] }.uniq
     end
     @trip = Trip.new
   end
+
+  # Charlie: Nouvelle methode à appeler dans la boucle de la méthode précédente
+  def findreviews(activity)
+    apireviews = FetchReviewsService.new(activity[:yelp_id]).()["reviews"]
+    apireviews.each do |review|
+      activity.reviews << {
+        name: review["user"]["name"],
+        reviewtext: review["text"]
+      }
+    end
+    activity.save
+  end
+
+
 
   def profile
   end

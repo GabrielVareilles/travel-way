@@ -6,4 +6,6 @@ class Activity < ApplicationRecord
   validates :longitude, presence: true
   geocoded_by :display_address
   after_validation :geocode, if: :display_address_changed?
+
+  serialize :reviews, Array
 end
