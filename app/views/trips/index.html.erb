@@ -6,28 +6,28 @@
   </div>
 </div>
 
-
 <div class="container">
-  <h1 style="text-align: center">My trips :</h1>
   <div class="row">
-
-    <% @trips.each do |trip| %>
-
-                  <div class="col-md-6 col-sm-12 portfolio print panel" data-toggle="modal" data-target="#porfolio-details-3">
-                    <div class="panel-body">
-                      <div class="portfolio-title">
-                        <div class="title">
-                          <h4><%= trip.name %></h4>
-                          <p><%= trip.places.join(" - ")%></p>
-                          <p><%= trip.start_date %> - <%= trip.end_date %></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="trip-portfolio-image">
-                        <%=image_tag "carte1.jpg", id: "carte"%>
-                    </div>
-                  </div>
-
+    <% if @trips.empty? %>
+      <div><h1 style="text-align: center; padding-top: 20px"><%= "You have no trip planned for the moment :(" %></h1>
+    <% else %>
+      <h1 style="text-align: center; padding-top: 20px">Your trips:</h1>
+      <% @trips.each do |trip| %>
+        <div class="col-md-6 col-sm-12 portfolio print panel" data-toggle="modal" data-target="#porfolio-details-3">
+          <div class="panel-body">
+            <div class="portfolio-title">
+              <div class="title">
+                <h4><%= trip.name %></h4>
+                <p><%= trip.places.join(" - ")%></p>
+                <p><%= trip.start_date %> - <%= trip.end_date %></p>
+              </div>
+            </div>
+          </div>
+          <div class="trip-portfolio-image">
+              <%=image_tag "carte1.jpg", id: "carte"%>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
