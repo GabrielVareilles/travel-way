@@ -79,7 +79,7 @@ function fetchActivitiesForPlace (city, callback) {
         list.insertAdjacentHTML('beforeend', cardTemplate(activity));
         let link = document.querySelectorAll(`#${city} .details-link`)[index]
         link.addEventListener("click", (event) => {
-            const yelp_id = event.target.parentNode.dataset.yelpId;            
+            const yelp_id = event.target.parentNode.dataset.yelpId;
             const reviews = fetchReviews(yelp_id);
             document.querySelector(".header-title").insertAdjacentHTML("beforeend", `${reviews}`)
         });

@@ -188,6 +188,8 @@
   document.querySelectorAll(".details-link").forEach( (link) => {
     link.addEventListener("click", (event) => {
         const yelp_id = event.target.parentNode.dataset.yelpId;
+        console.log(yelp_id);
+
         const reviews = fetchReviews(yelp_id);
         document.querySelector(".header-title").insertAdjacentHTML("beforeend", `${reviews}`)
     });
