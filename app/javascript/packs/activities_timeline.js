@@ -72,7 +72,7 @@ function cardTemplate (activity) {
 
 function buttonTemplate(city, category) {
   return `
-  <button type="button" class="allFilter btn background-black filter-selected animated fadeInDown" onclick="filterCategories('${city}', '${category}')">${category}</button>
+  <button type="button" class="allFilter btn background-black filter-selected animated fadeInLeft" onclick="filterCategories('${city}', '${category}')">${category}</button>
   `
 }
 
