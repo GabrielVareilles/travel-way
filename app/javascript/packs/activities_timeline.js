@@ -1,3 +1,4 @@
+
 function cardTemplate (activity) {
   return `
     <div class="col-md-4 col-sm-6 portfolio panel all ${activity.category} animated fadeIn">
@@ -16,14 +17,13 @@ function cardTemplate (activity) {
         <div class="activities-portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${activity.image_url}');">
         </div>
       </div>
-      <p>
-        <span class="hide">${ activity.yelp_id }</span>
-        <a class=".details-link" data-toggle="modal" data-target="#info-${activity.id}">View details</a>
-      </p>
+      <div data-yelp-id="${activity.yelp_id}">
+        <a class="details-link" data-toggle="modal" data-target="#info-${activity.yelp_id}">View details</a>
+      </div>
     </div>
 
  <!--  Modal -->
-    <div class="modal fade" id="info-${activity.id}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="info-${activity.yelp_id}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
          <button type="button" class="modal-close-btn" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
@@ -49,7 +49,7 @@ function cardTemplate (activity) {
                 </div>
               </div>
               <div class="modal-text col-md-7">
-                <p><ul id="${ activity.id }-reviews"> test texte reviews </ul></p>
+                <p><ul id="${ activity.id }-reviews"></ul></p>
               </div>
             </div>
           </div>
@@ -66,6 +66,15 @@ function buttonTemplate(city, category) {
   `
 }
 
+function fetchReviews(yelp_id) {
+  fetch(`/fetchreviews?yelp_id=${yelp_id}`, { credentials: "same-origin" })
+    .then(response => response.json())
+    .then(results => {
+      console.log(results);
+      document.querySelector(`#info-${yelp_id} ul`).insertAdjacentHTML("beforeend", `<li>${results['reviews'][0]['text']}</li>`)
+    });
+};
+
 function fetchActivitiesForPlace (city, callback) {
   const timeline = document.getElementById('timeline');
   const list = timeline.querySelector(`#${city} .activities-list`);
@@ -78,7 +87,12 @@ function fetchActivitiesForPlace (city, callback) {
     results.activities.forEach((activity, index) => {
       setTimeout(() => {
         list.insertAdjacentHTML('beforeend', cardTemplate(activity));
-      }, 150 * index)
+        let link = document.querySelectorAll(`#${city} .details-link`)[index]
+        link.addEventListener("click", (event) => {
+            const yelp_id = event.target.parentNode.dataset.yelpId;
+            fetchReviews(yelp_id);
+        });
+      }, 150 * index);
     });
 
     results.categories.forEach((category, index) => {
@@ -97,3 +111,4 @@ $(() => {
     })
   }
 })
+
