@@ -16,8 +16,8 @@
   margin-bottom: 30px;
   padding-right: 35px;
   border-left-style: solid;
-  border-left-color: rgb(111, 198, 217);
-  border-left-width: 15px;
+  border-left-color: rgba(0,0,0,0.5);
+  border-left-width: 8px;
   min-height: 460px;
 
 }
@@ -26,9 +26,10 @@
   margin-bottom: 20px;
 }
 
-h2.h-form {
+h6.h-form {
   font-size: 15px;
   font-style: italic;
+  font-weight: 300;
 }
 
 // DATE INPUTS
@@ -93,11 +94,23 @@ input::-webkit-date-time-edit {
 }
 
 .panel-body-setplaces {
-  height: 50px;
+  height: 115px;
   margin-bottom: 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding-left: 5px;
 }
 
-.title-right {
-  height: 115px;
-  width: 220px;
+
+.col-sm-offset-3.col-sm-6.formplaces {
+    width: 70%;
+}
+
+.col-sm-12.panel.tuto {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.row.sub-container {
+  padding-top: 50px;
 }
