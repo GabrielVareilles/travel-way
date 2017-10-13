@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :search, controller: :search, only: :index
+  resources :fetchreviews, controller: :fetchreviews, only: :index
 
   # namespace :admin do
     resources :trips do

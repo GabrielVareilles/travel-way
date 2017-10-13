@@ -16,7 +16,10 @@ function cardTemplate (activity) {
         <div class="activities-portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${activity.image_url}');">
         </div>
       </div>
-      <a class="" data-toggle="modal" data-target="#info-${activity.id}">View details</a>
+      <p>
+        <span class="hide">${ activity.yelp_id }</span>
+        <a class=".details-link" data-toggle="modal" data-target="#info-${activity.id}">View details</a>
+      </p>
     </div>
 
  <!--  Modal -->
@@ -77,11 +80,7 @@ function fetchActivitiesForPlace (city, callback) {
         list.insertAdjacentHTML('beforeend', cardTemplate(activity));
       }, 150 * index)
     });
-    results.activities.forEach((activity, index) => {
-      JSON.parse(activity.reviews).forEach((a) => {
-        document.getElementById(`${ activity.id }-reviews`).insertAdjacentHTML("beforeend", "<li>lol</li>");
-      });
-    });
+
     results.categories.forEach((category, index) => {
       setTimeout(() => {
         categoriesList.insertAdjacentHTML('beforeend', buttonTemplate(city, category));
