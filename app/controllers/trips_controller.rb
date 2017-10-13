@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   attr_accessor :hash_city
   def index
     # @trips = current_user.trips
-    @trips = Trip.all
+    @trips = current_user.trips.all
   end
 
   def show
