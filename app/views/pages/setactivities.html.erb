@@ -44,8 +44,6 @@
   </div>
 </div>
 
-
-
 <%= simple_form_for(@trip) do |f| %>
 
 <div class="main-content container fluid-container">
@@ -175,20 +173,7 @@
     });
   }
 
-  let chosenActivities = 0;
 
-  document.querySelectorAll(".card-setactivity").forEach(function (card) {
-    card.addEventListener("click", function (event) {
-      if (card.classList.contains("selected-card")) {
-        chosenActivities -= 1;
-        card.classList.remove("selected-card");
-        card.querySelector("input").checked = false;
-      } else {
-        chosenActivities += 1;
-        card.classList.add("selected-card");
-        card.querySelector("input").checked = true;
-      }
-    });
-  });
+
   </script>
 <% end %>
