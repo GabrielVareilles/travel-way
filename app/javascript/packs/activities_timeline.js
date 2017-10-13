@@ -46,7 +46,7 @@ function cardTemplate (activity) {
                 </div>
               </div>
               <div class="modal-text col-md-7">
-                <p> ${ activity.reviews }</p>
+                <p><ul id="${ activity.id }-reviews"> test texte reviews </ul></p>
               </div>
             </div>
           </div>
@@ -77,7 +77,11 @@ function fetchActivitiesForPlace (city, callback) {
         list.insertAdjacentHTML('beforeend', cardTemplate(activity));
       }, 150 * index)
     });
-
+    results.activities.forEach((activity, index) => {
+      JSON.parse(activity.reviews).forEach((a) => {
+        document.getElementById(`${ activity.id }-reviews`).insertAdjacentHTML("beforeend", "<li>lol</li>");
+      });
+    });
     results.categories.forEach((category, index) => {
       setTimeout(() => {
         categoriesList.insertAdjacentHTML('beforeend', buttonTemplate(city, category));
