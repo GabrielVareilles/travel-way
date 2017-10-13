@@ -1,0 +1,28 @@
+// .panel-title-show {
+//   position: relative;
+//   .panel-icon {
+//     position: absolute;
+
+//   }
+//   .panel-title-show {
+//     position: absolute;
+//   }
+// }
+
+.portfolio-title {
+  // position: relative;
+}
+.portfolio-icon.back-color {
+  background-color: rgba(0,0,0,0.1);
+  // position: absolute;
+}
+
+.panel-heading.show h4 {
+  padding: 2px 0 10px 0 !important;
+  margin: 0;
+  color: #ffffff !important;
+}
+
+.panel-heading.background-with-image-1.show, .panel-heading.background-with-image-2.show, .panel-heading.background-with-image-3.show {
+  height: 115px;
+}
