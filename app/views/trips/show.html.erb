@@ -90,16 +90,21 @@
                     <div class="row">
                       <% group.each_with_index do |activity, ind| %>
                         <div class="col-md-4 col-sm-6 service panel">
-                          <div class="panel-heading background-with-image-<%= ind + 1 %>">
-                            <div class="panel-icon">
-                              <span class="glyphicon glyphicon-repeat"></span>
+                          <div class="panel-heading background-with-image-<%= ind + 1 %> show">
+                            <div class="portfolio-title">
+
+                              <div class="portfolio-icon back-color">
+                                <div><%= activity.category.first.upcase %></div>
+                              </div>
+                              <div class="panel-title-show">
+                                <h4><%= activity.name %></h4>
+                              </div>
+
                             </div>
-                            <div class="panel-title">
-                              <h4><%= activity.name %></h4>
-                            </div>
+
                           </div>
-                          <div class="panel-body">
-                            <p>Description blablabla blablabla blablabla blablabla blablabla</p>
+                          <div>
+                           <div class="activities-portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= activity.image_url %>');"></div>
                           </div>
                         </div>
                       <% end %>
