@@ -15,7 +15,12 @@ class TripsController < ApplicationController
       @sliced_activities << slice(activities)
       @hash[city] = set_coords_and_markers(slice(activities))
     end
-    @cities = @hash.keys
+    @cities = []
+    @cities_not_cleaned = @hash.keys
+    @cities_not_cleaned.each do |city_not_cleaned|
+      @cities << city_not_cleaned.split( /\s+|\b/ ).first
+    end
+    @cities = @cities.uniq
     @travels = {}
     @cities.each_with_index do |city, indexcity|
       if @cities.size > 1 && indexcity < (@cities.size - 1)
@@ -51,7 +56,7 @@ class TripsController < ApplicationController
 
 
   def group_by_place
-    @trip.activities.group_by{ |h| h[:place_name] }
+    @trip.activities.group_by{ |h| h[:place_name].split( /\s+|\b/ ).first }
   end
 
   def slice(group)
