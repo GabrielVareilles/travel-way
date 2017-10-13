@@ -1,0 +1,40 @@
+.review img{
+ display: inline;
+ margin: auto 0;
+ height: 100%;
+ width: auto;
+ position: absolute;
+ top: 0px;
+}
+
+.image-cropper {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  top: 0px;
+}
+
+.review-text {
+  padding-left: 7px;
+
+}
+
+.review tr {
+  padding-top: 10px;
+}
+
+.review td {
+  position: relative;
+}
+
+.review {
+  padding: 15px 15px;
+}
+
+.review b {
+  font-size: 16px;
+}
+
+.info-list li {
+  list-style-type: none;
+}
