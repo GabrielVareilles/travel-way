@@ -1,10 +1,15 @@
-<div class="trip-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('../../assets/images/banner1');">
-  <div class="trip-banner-content">
-    <h1>All your trips</h1>
-    <p>Travel easy, life is easy</p>
-    <%= link_to "Plan a new trip", "/setplaces", class: "btn btn-primary" %>
+<!-- Header -->
+<div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
+  <div class="container fluid-container header-content content-area">
+    <span class="header-icon glyphicon glyphicon-globe"></span>
+    <div class="header-title">
+      <h1>All your saved trips</h1>
+      <h3>Share them with your friends</h3>
+    </div>
   </div>
 </div>
+
+
 
 <div class="container">
   <div class="row">
@@ -13,20 +18,25 @@
     <% else %>
       <h1 style="text-align: center; padding-top: 20px">Your trips:</h1>
       <% @trips.each do |trip| %>
+      <a href="<%= trip_path(trip) %>">
         <div class="col-md-6 col-sm-12 portfolio print panel" data-toggle="modal" data-target="#porfolio-details-3">
-          <div class="panel-body">
+
+          <div class="panel-body cardlinkedrelative">
             <div class="portfolio-title">
               <div class="title">
                 <h4><%= trip.name %></h4>
                 <p><%= trip.places.join(" - ")%></p>
-                <p><%= trip.start_date %> - <%= trip.end_date %></p>
+                <h5>From <%= trip.start_date %> to <%= trip.end_date %></h5>
               </div>
             </div>
+
           </div>
+
           <div class="trip-portfolio-image">
               <%=image_tag "carte1.jpg", id: "carte"%>
           </div>
         </div>
+        </a>
       <% end %>
     <% end %>
   </div>
