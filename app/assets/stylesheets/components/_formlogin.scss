@@ -1,51 +1,15 @@
-.form {
-  background-position: left 25%;
-}
-
-.content-login {
+.content-form-trip-log {
   position: relative;
-  height: 27em;
-  width: 405px;
+  overflow:auto;
+  transition:height 1s ease;
+  width: 415px;
   background-color: white;
   border-radius: 6px;
   margin-bottom: 30px;
-}
+  padding-right: 35px;
+  border-left-style: solid;
+  border-left-color: rgba(0,0,0,0.5);
+  border-left-width: 8px;
+  min-height: 370px;
 
-.container .login {
-  width: 200px;
-  margin-top: 30px;
-}
-
-// BANDE/IMAGE SUR COTE DU FORM
-
-.card-photo-login {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  height: 27em;
-  width: 4%;
-}
-
-// FORMULAIRE EN LUI-MÊME
-
-.card-form {
-  position: absolute;
-  top: 22px;
-  right: 38px;
-}
-
-.btn.background-1.form-trip {
-  background-color: #56c2b1;
-  font-size: 14px;
-  padding: 9px;
-  position: absolute;
-  right: 0;
-  width: 100px;
-}
-
-input#user_remember_me.boolean.optional {
-    width: 12px;
-    height: 12px;
 }
