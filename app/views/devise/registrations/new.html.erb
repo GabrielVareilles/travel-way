@@ -9,61 +9,16 @@
 </div>
 
 <div class="main-content container fluid-container">
-  <div class=" row sub-container">
-    <div class="content-setplaces">
-      <div class="title-right">
-      <h1>How does the magic happen ? </h1>
-      <h2 class="h-form">Only three steps</h2>
-      </div>
-      <div class="row">
-      <div class="col-sm-12 panel tuto">
-      <div class="print panel-body panel-body-setplaces">
-        <div class="portfolio-title">
-          <div class="portfolio-icon">
-            <div>1</div>
-          </div>
-          <div class="title title-setplaces">
-            <p>Based on your cities selection we deeply analyze the best ranked activities</p>
-          </div>
-        </div>
-      </div>
-      </div>
 
-      <div class="col-sm-12 panel tuto">
-      <div class="mobile panel-body panel-body-setplaces">
-        <div class="portfolio-title">
-          <div class="portfolio-icon">
-            <div>2</div>
-          </div>
-          <div class="title title-setplaces">
-            <p>Regarding your preferences you can filter and chose all the top activities we select for each city</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
+  <%= render 'shared/businesspropal'%>
 
-    <div class="col-sm-12 panel tuto">
-    <div class="web panel-body panel-body-setplaces">
-        <div class="portfolio-title">
-          <div class="portfolio-icon">
-            <div>3</div>
-          </div>
-          <div class="title title-setplaces">
-            <p>We display for you the perfect schedule for your visits. You can even benefit from a selection of ways of transport!</p>
-          </div>
-        </div>
-      </div>
-      </div>
-      </div>
-    <div class="form-trip" style="margin-top: 80px;">
-      <div class="row">
-        <div class="col-sm-offset-3 col-sm-6 formplaces">
-          <div class="tripform">
-
+  <div class="form-trip" style="margin-top: 80px;">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6 formplaces">
+        <div class="tripform">
           <div class="content-form-trip-reg">
             <div class="card-photo-login" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>), max-height: 100%">
-            </div>
+          </div>
 
             <div class="tripform">
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -74,7 +29,18 @@
                 <%= f.input :password_confirmation, required: true, placeholder: "********", label: "Please, confirm" %>
               </div>
                 <%= f.submit "New account" ,class: "btn background-1 form-reg" %>
-            <%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+  <span class="btn-reg" style="margin-top: 12px"><%= link_to "Log in", new_session_path(resource_name) %><br /></span>
+<% end -%>
+
+<div class="loginBtn loginBtn--facebook fb" style="width: 320px; margin-top: 57px;" >
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), id: "facebook-logo" %><br />
+  <% end -%>
+<% end -%>
+</div>
+
             <% end %>
 
             </div>
@@ -84,5 +50,3 @@
     </div>
   </div>
 </div>
-
-
