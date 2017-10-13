@@ -59,7 +59,7 @@ class TripsController < ApplicationController
     group.each_slice(3) { |a| @a_activities_day << a }
     @a_activities_day
   end
-
+  # hash de coordonées par rapport à une ville (et un jour ?)
   def set_coords_and_markers(activities_per_place_and_day)
     activities_per_place_and_day = activities_per_place_and_day.flatten
     @city = activities_per_place_and_day.first.place_name
@@ -69,11 +69,11 @@ class TripsController < ApplicationController
         @activities_map << activity
       end
     end
-    markers_hash = Gmaps4rails.build_markers(@activities_map.flatten) do |activity, marker|
+    @markers_hash = Gmaps4rails.build_markers(@activities_map.flatten) do |activity, marker|
       marker.lat activity.latitude
       marker.lng activity.longitude
     end
-    markers_hash
+    @markers_hash
   end
 end
 
