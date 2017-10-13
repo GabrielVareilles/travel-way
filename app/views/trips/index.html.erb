@@ -19,6 +19,7 @@
     <% if @trips.empty? %>
       <div><h1 style="text-align: center; padding-top: 20px"><%= "You have no trip planned for the moment :(" %></h1>
     <% else %>
+    <div class="index-container" style="margin-top: 50px;">
       <% @trips.each do |trip| %>
       <a href="<%= trip_path(trip) %>">
         <div class="col-md-6 col-sm-12 portfolio print panel" data-toggle="modal" data-target="#porfolio-details-3">
@@ -40,6 +41,7 @@
         </div>
         </a>
       <% end %>
+      </div>
     <% end %>
   </div>
 </div>
