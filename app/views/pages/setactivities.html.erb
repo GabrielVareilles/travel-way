@@ -187,7 +187,7 @@
 
   document.querySelectorAll(".details-link").forEach( (link) => {
     link.addEventListener("click", (event) => {
-        const yelp_id = event.target.parentNode.innerText;
+        const yelp_id = event.target.parentNode.dataset.yelpId;
         const reviews = fetchReviews(yelp_id);
         document.querySelector(".header-title").insertAdjacentHTML("beforeend", `${reviews}`)
     });

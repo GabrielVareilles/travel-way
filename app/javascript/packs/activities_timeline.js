@@ -16,10 +16,9 @@ function cardTemplate (activity) {
         <div class="activities-portfolio-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${activity.image_url}');">
         </div>
       </div>
-      <p>
-        <span class="hide">${ activity.yelp_id }</span>
-        <a class=".details-link" data-toggle="modal" data-target="#info-${activity.id}">View details</a>
-      </p>
+      <div data-yelp-id="${activity.yelp_id}">
+        <a class="details-link" data-toggle="modal" data-target="#info-${activity.id}">View details</a>
+      </div>
     </div>
 
  <!--  Modal -->
@@ -78,7 +77,13 @@ function fetchActivitiesForPlace (city, callback) {
     results.activities.forEach((activity, index) => {
       setTimeout(() => {
         list.insertAdjacentHTML('beforeend', cardTemplate(activity));
-      }, 150 * index)
+        let link = document.querySelectorAll(`#${city} .details-link`)[index]
+        link.addEventListener("click", (event) => {
+            const yelp_id = event.target.parentNode.dataset.yelpId;            
+            const reviews = fetchReviews(yelp_id);
+            document.querySelector(".header-title").insertAdjacentHTML("beforeend", `${reviews}`)
+        });
+      }, 150 * index);
     });
 
     results.categories.forEach((category, index) => {
@@ -86,6 +91,15 @@ function fetchActivitiesForPlace (city, callback) {
         categoriesList.insertAdjacentHTML('beforeend', buttonTemplate(city, category));
       }, 150 * index)
     });
+
+    // document.querySelectorAll(".details-link").forEach( (link) => {
+    //   console.log(link);
+    //   link.addEventListener("click", (event) => {
+    //       const yelp_id = event.target.parentNode.dataset.yelpId;
+    //       const reviews = fetchReviews(yelp_id);
+    //       document.querySelector(".header-title").insertAdjacentHTML("beforeend", `${reviews}`)
+    //   });
+    // });
   })
 }
 
