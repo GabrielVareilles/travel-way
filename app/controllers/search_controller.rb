@@ -33,16 +33,16 @@ class SearchController < ApplicationController
   end
 
   private
-   def findreviews(activity)
-    reviews = []
-    apireviews = FetchReviewsService.new(activity["yelp_id"]).()["reviews"]
-    apireviews.each do |review|
-      reviews << {
-        name: review["user"]["name"],
-        reviewtext: review["text"]
-      }
-    end
-    reviews.to_s
-  end
+  #  def findreviews(activity)
+  #   reviews = []
+  #   apireviews = FetchReviewsService.new(activity["yelp_id"]).()["reviews"]
+  #   apireviews.each do |review|
+  #     reviews << {
+  #       name: review["user"]["name"],
+  #       reviewtext: review["text"]
+  #     }
+  #   end
+  #   reviews.to_s
+  # end
 
 end
