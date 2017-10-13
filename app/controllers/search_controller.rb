@@ -20,6 +20,7 @@ class SearchController < ApplicationController
           activity['place_name'] = activity['location']['city']
           activity['display_address'] = activity['location']['display_address'].join(' ')
           activity.delete('location')
+
           # activity['reviews'] = findreviews(activity)
           worker.add(activity)
           h_activities << activity
