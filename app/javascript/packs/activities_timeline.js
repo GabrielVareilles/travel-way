@@ -18,6 +18,42 @@ function cardTemplate (activity) {
       </div>
       <a class="" data-toggle="modal" data-target="#info-${activity.id}">View details</a>
     </div>
+
+ <!--  Modal -->
+    <div class="modal fade" id="info-${activity.id}" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <button type="button" class="modal-close-btn" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+         <div class="modal-body container-fluid portfolio mobile">
+            <!--  Carousel -->
+            <div id="carousel-portfolio-2" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img src="${activity.image_url}" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="portfolio-title">
+                  <div class="portfolio-icon">
+                    <div>M</div>
+                  </div>
+                  <div class="title">
+                    <h4>${activity.name}</h4>
+                    <em>UI / UX design.</em>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-text col-md-7">
+                <p> ${ activity.reviews }</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   `
 }
 

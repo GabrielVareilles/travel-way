@@ -56,24 +56,14 @@ class PagesController < ApplicationController
     # @trip = Trip.new
   end
 
-  # Charlie: Nouvelle methode à appeler dans la boucle de la méthode précédente
-  def findreviews(activity)
-    apireviews = FetchReviewsService.new(activity[:yelp_id]).()["reviews"]
-    apireviews.each do |review|
-      activity.reviews << {
-        name: review["user"]["name"],
-        reviewtext: review["text"]
-      }
-    end
-    activity.save
-  end
-
-
 
   def profile
   end
 
   private
+
+
+
 
   def trip_params
     params.require(:trip).permit(:name, :start_date, :end_date, :activity_ids)
