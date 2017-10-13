@@ -1,25 +1,87 @@
-<div class="site-holder form" style="background-image: url(<%= image_path('background.jpg') %>)">
-  <div class="container login">
-    <div class="row">
-      <div class="col-sm-offset-4 col-sm-4">
-      <h2>Log in</h2>
-        <div class="content-login">
-          <div class="card-photo-login background-with-image-3" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>)"></div>
-          <div class="card-form">
+<div class="header" style="background-image: url(<%= image_path('header2.jpg') %>)">
+  <div class="container fluid-container header-content content-area">
+    <span class="header-icon glyphicon glyphicon-ok"></span>
+    <div class="header-title">
+      <h1>LOGIN</h1>
+      <h2>Please, sign in :)</h2>
+    </div>
+  </div>
+</div>
+
+<div class="main-content container fluid-container">
+  <div class=" row sub-container">
+    <div class="content-setplaces">
+      <div class="title-right">
+      <h1>How does the magic happen ? </h1>
+      <h2 class="h-form">Only three steps</h2>
+      </div>
+      <div class="row">
+      <div class="col-sm-12 panel tuto">
+      <div class="print panel-body panel-body-setplaces">
+        <div class="portfolio-title">
+          <div class="portfolio-icon">
+            <div>1</div>
+          </div>
+          <div class="title title-setplaces">
+            <p>Based on your cities selection we deeply analyze the best ranked activities</p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="col-sm-12 panel tuto">
+      <div class="mobile panel-body panel-body-setplaces">
+        <div class="portfolio-title">
+          <div class="portfolio-icon">
+            <div>2</div>
+          </div>
+          <div class="title title-setplaces">
+            <p>Regarding your preferences you can filter and chose all the top activities we select for each city</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-sm-12 panel tuto">
+    <div class="web panel-body panel-body-setplaces">
+        <div class="portfolio-title">
+          <div class="portfolio-icon">
+            <div>3</div>
+          </div>
+          <div class="title title-setplaces">
+            <p>We display for you the perfect schedule for your visits. You can even benefit from a selection of ways of transport!</p>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    <div class="form-trip" style="margin-top: 80px;">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 formplaces">
+          <div class="tripform">
+
+          <div class="content-form-trip-log">
+            <div class="card-photo-login" style="background-image: linear-gradient(rgba(111, 198, 217, 0.8), rgba(111, 198, 217, 0.8)), url(<%= image_path('large-3.jpg') %>), max-height: 100%">
+            </div>
+
+            <div class="tripform">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-inputs">
+              <div id="forminputs">
                 <%= f.input :email, required: false, placeholder: "peter@pan.com", label: "Your email", autofocus: true %>
                 <%= f.input :password, required: false, placeholder: "********", label: "Your password" %>
                 <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
               </div>
-              <div class="form-actions">
                 <%= f.submit "Log in", class: "btn background-1 form-trip" %>
-              </div>
+                <div style="padding-left: 5Opx"><%= render "devise/shared/links" %></div>
             <% end %>
-            <%= render "devise/shared/links" %>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+

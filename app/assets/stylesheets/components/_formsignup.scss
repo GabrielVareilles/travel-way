@@ -1,50 +1,78 @@
-.form {
-  background-position: left 25%;
+// .form {
+//   background-position: left 25%;
+// }
+
+// .content-signup {
+//   position: relative;
+//   height: 31em;
+//   width: 405px;
+//   background-color: white;
+//   border-radius: 6px;
+//   margin-bottom: 30px;
+// }
+
+// .container .signup {
+//   width: 200px;
+//   margin-top: 30px;
+// }
+
+// // BANDE/IMAGE SUR COTE DU FORM
+
+// .card-photo-signup {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   border-top-left-radius: 6px;
+//   border-bottom-left-radius: 6px;
+//   height: 31em;
+//   width: 4%;
+// }
+
+// // FORMULAIRE EN LUI-MÊME
+
+// .card-form {
+//   position: absolute;
+//   top: 22px;
+//   right: 38px;
+// }
+
+// .btn.background-1.form-trip {
+//   background-color: #56c2b1;
+//   font-size: 14px;
+//   padding: 9px;
+//   position: absolute;
+//   right: 0;
+//   width: 100px;
+// }
+
+// .checkbox label {
+//   padding-left: 0px;
+// }
+
+.content-form-trip-reg {
+    position: relative;
+    overflow: auto;
+    -webkit-transition: height 1s ease;
+    transition: height 1s ease;
+    width: 415px;
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    padding-right: 35px;
+    border-left-style: solid;
+    border-left-color: rgba(0, 0, 0, 0.5);
+    border-left-width: 8px;
+    min-height: 370px;
+    padding-left: 30px;
+    padding-top: 30px;
 }
 
-.content-signup {
-  position: relative;
-  height: 31em;
-  width: 405px;
-  background-color: white;
-  border-radius: 6px;
-  margin-bottom: 30px;
-}
-
-.container .signup {
-  width: 200px;
-  margin-top: 30px;
-}
-
-// BANDE/IMAGE SUR COTE DU FORM
-
-.card-photo-signup {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  height: 31em;
-  width: 4%;
-}
-
-// FORMULAIRE EN LUI-MÊME
-
-.card-form {
-  position: absolute;
-  top: 22px;
-  right: 38px;
-}
-
-.btn.background-1.form-trip {
-  background-color: #56c2b1;
-  font-size: 14px;
-  padding: 9px;
-  position: absolute;
-  right: 0;
-  width: 100px;
-}
-
-.checkbox label {
-  padding-left: 0px;
+.btn.background-1.form-reg {
+background-color: #56c2b1;
+    font-size: 14px;
+    padding: 9px;
+    position: absolute;
+    right: 66px;
+    width: 100px;
+    margin-right: -29px;
 }
