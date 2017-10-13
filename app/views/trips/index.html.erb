@@ -4,7 +4,7 @@
     <span class="header-icon glyphicon glyphicon-globe"></span>
     <div class="header-title">
       <h1>All your saved trips</h1>
-      <h3>Share them with your friends</h3>
+      <h2>Share them with your friends</h2>
     </div>
   </div>
 </div>
@@ -16,7 +16,6 @@
     <% if @trips.empty? %>
       <div><h1 style="text-align: center; padding-top: 20px"><%= "You have no trip planned for the moment :(" %></h1>
     <% else %>
-      <h1 style="text-align: center; padding-top: 20px">Your trips:</h1>
       <% @trips.each do |trip| %>
       <a href="<%= trip_path(trip) %>">
         <div class="col-md-6 col-sm-12 portfolio print panel" data-toggle="modal" data-target="#porfolio-details-3">
