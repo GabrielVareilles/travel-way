@@ -45,7 +45,7 @@
       <% @sliced_activities.each do |activities_per_group| %>
         <% city_array = [] %>
         <% activities_per_group.each_with_index do |group, index| %>
-          <% city = group.first.place_name %>
+          <% city = group.first.place_name.split( /\s+|\b/ ).first %>
           <% city_array << city %>
           <% if city != city_array[-2]  %>
             <li>
@@ -81,9 +81,9 @@
                         <span class="glyphicon glyphicon-menu-up"></span>
                       </a>
                     </div>
-                    <% city = group.first.place_name %>
+                    <% city = group.first.place_name.split( /\s+|\b/ ).first %>
                     <% city_array << city %>
-                    <% if city != city_array[-2]  %>
+                    <% if city != city_array[-2] %>
                       <h1><%= city %></h1>
                     <% end %>
                     <h5><%= "Day #{n}" %></h5>
@@ -235,7 +235,7 @@
                                     styles: styles
                                   },
                                   internal: { id: "map_<%= city + n.to_s %>" } }, function() {
-                                  markers = handler.addMarkers(<%= raw @hash[city].each_slice(3).to_a[index].to_json %>);
+                                  markers = handler.addMarkers(<%= raw @hash[city.split( /\s+|\b/ ).first].each_slice(3).to_a[index].to_json %>);
                                   handler.bounds.extendWith(markers);
                                   handler.fitMapToBounds();
                                   if (markers.length == 0) {
@@ -250,49 +250,13 @@
                     </div>
                     <!-- Rome2Rio -->
 
-                    <% @cities.each_with_index do |cityform, indexcity| %>
-                      <% if cityform == city && cityform != @cities[-1] && city != city_array[-2] %>
-                        <div class="row" >
-                          <div class="col-md-12 col-sm-12 col-lg-12 service panel">
-                            <div class="panel-heading background-with-image-2">
-                              <div class="panel-icon"><span class="glyphicon glyphicon-transfer"></span></div>
-                                <div class="panel-title">
-                                  <h4>How can you get from <%= city %> to <%= @cities[(indexcity + 1)] %>?</h4>
-                                  <p>There are plenty of ways: </p>
-                                </div>
-                            </div>
-                            <div class="panel-body body-r2r">
-                              <table class="table table-travel">
-                              <% @travelscity = @travels[city]['routes'] %>
-                                <% @travelscity.each do |route| %>
-                                  <tbody>
-                                    <tr>
-                                      <td><h5><%= route['name'] %></h5></td>
-                                        <td><h6><%= route['totalDuration'] / 60 %>h<%= (route['totalDuration'].to_i % 60) / 01 %></h6></td>
-                                          <% if route['indicativePrices'] %>
-                                            <% if route['indicativePrices'].first['priceLow'] %>
-                                              <td> <h6><%=route['indicativePrices'].first['priceLow'] %> - <%= route['indicativePrices'].first['priceHigh'] %> <%= route['indicativePrices'].first['currency'] %></h6></td>
-                                            <% elsif route['indicativePrices'].first['price'] %>
-                                              <td><h6><%= route['indicativePrices'].first['price']%> <%= route['indicativePrices'].first['currency'] %></h6></td>
-                                            <% end %>
-                                          <% else %>
-                                            <td><h6>N/A</h6></td>
-                                          <% end %>
-                                    </tr>
-                                  </tbody>
-                                <% end %>
-                              </table>
-                                <%= link_to "Purchase tickets", "https://www.rome2rio.com/fr/s/#{@cities[indexcity]}/#{@cities[indexcity + 1]}", target: "blank", class: "btn btn-primary btn-trip"%>
-                            </div>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
             </li>
         <% end %>
-      <% end %>
-    </ul>
 
+      <% end %>
+
+    </ul>
+<%= render 'shared/rometoriodisplay' %>
 </div>
 
 

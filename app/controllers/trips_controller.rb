@@ -48,6 +48,7 @@ class TripsController < ApplicationController
   def edit
   end
 
+
   private
 
   def trip_params
