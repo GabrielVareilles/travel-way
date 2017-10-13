@@ -177,25 +177,6 @@
 
   let chosenActivities = 0;
 
-  function fetchReviews(yelp_id) {
-    fetch(`/fetchreviews?yelp_id=${yelp_id}`, { credentials: "same-origin" })
-    .then(response => response.json())
-    .then(results => {
-      document.querySelector(".header-title").insertAdjacentHTML("beforeend", `<p>${results}</p>`);
-    });
-  };
-
-  document.querySelectorAll(".details-link").forEach( (link) => {
-    link.addEventListener("click", (event) => {
-        const yelp_id = event.target.parentNode.dataset.yelpId;
-        console.log(yelp_id);
-
-        const reviews = fetchReviews(yelp_id);
-        document.querySelector(".header-title").insertAdjacentHTML("beforeend", `${reviews}`)
-    });
-  });
-
-
   document.querySelectorAll(".card-setactivity").forEach(function (card) {
     card.addEventListener("click", function (event) {
       if (card.classList.contains("selected-card")) {
