@@ -26,7 +26,7 @@
           <% city_array << city %>
           <% if city != city_array[-2]  %>
             <li>
-              <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name.capitalize %></a>
             </li>
           <% end %>
         <% end %>
@@ -49,7 +49,7 @@
           <% city_array << city %>
           <% if city != city_array[-2]  %>
             <li>
-              <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= city %></a>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= city.capitalize %></a>
             </li>
           <% end %>
         <% end %>
