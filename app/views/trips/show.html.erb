@@ -1,5 +1,4 @@
-<!-- HEADER -->
-
+<!-- Header -->
 <div class="header" style="background-image: url(<%= image_path('header2.jpg') %>">
   <div class="container fluid-container header-content content-area">
     <span class="header-icon glyphicon glyphicon-star-empty"></span>
@@ -21,10 +20,15 @@
     </button>
     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
       <% @sliced_activities.each do |activities_per_group| %>
+        <% city_array = [] %>
         <% activities_per_group.each_with_index do |group, index| %>
-          <li>
-            <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
-          </li>
+          <% city = group.first.place_name %>
+          <% city_array << city %>
+          <% if city != city_array[-2]  %>
+            <li>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
@@ -39,23 +43,31 @@
     </div>
     <ul>
       <% @sliced_activities.each do |activities_per_group| %>
+        <% city_array = [] %>
         <% activities_per_group.each_with_index do |group, index| %>
-          <li>
-            <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= group.first.place_name %></a>
-          </li>
+          <% city = group.first.place_name %>
+          <% city_array << city %>
+          <% if city != city_array[-2]  %>
+            <li>
+              <a href="javascript:void(0);" onclick="scrollToAnchor('section-<%= index + 1%>')"><%= city %></a>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
   </div>
 </div>
 
+<!-- Contenu -->
 <div class="main-content container fluid-container">
 
   <h1>Your trip: <%= @trip.name %></h1>
     <ul id="timeline" class="timeline">
       <% n = 0 %>
       <% @sliced_activities.each do |activities_per_group| %>
-        <% activities_per_group.each do |group| %>
+      <% city_array = [] %>
+        <% activities_per_group.each_with_index do |group, index| %>
+        <!-- group = one day -->
           <li>
             <a name="section-<%= n += 1 %>"></a>
             <div class="timeline-badge">
@@ -70,7 +82,10 @@
                       </a>
                     </div>
                     <% city = group.first.place_name %>
-                    <h1><%= city %></h1>
+                    <% city_array << city %>
+                    <% if city != city_array[-2]  %>
+                      <h1><%= city %></h1>
+                    <% end %>
                     <h5><%= "Day #{n}" %></h5>
                     <div class="row">
                       <% group.each_with_index do |activity, ind| %>
@@ -88,9 +103,9 @@
                           </div>
                         </div>
                       <% end %>
-                        <div id="map_<%= city %>" style="width: 100%; height: 300px; border-radius: 6px;"></div>
-
-                          <% content_for :after_js do %>
+                        <!-- Map per day -->
+                        <div id="map_<%= city  + n.to_s %>" style="width: 100%; height: 300px; border-radius: 6px;"></div>
+                        <% content_for :after_js do %>
                             <script>
                               $(function(handler) {
                                 var styles = [
@@ -214,8 +229,8 @@
                                   provider: {
                                     styles: styles
                                   },
-                                  internal: { id: 'map_<%= city %>' } }, function() {
-                                  markers = handler.addMarkers(<%= raw @hash[city].to_json %>);
+                                  internal: { id: "map_<%= city + n.to_s %>" } }, function() {
+                                  markers = handler.addMarkers(<%= raw @hash[city].each_slice(3).to_a[index].to_json %>);
                                   handler.bounds.extendWith(markers);
                                   handler.fitMapToBounds();
                                   if (markers.length == 0) {
@@ -226,46 +241,46 @@
                                 });
                               });
                             </script>
-                          <% end %>
-                        </div>
+                      <% end %>
                     </div>
-                    <% @cities.each_with_index do |cityform, indexcity| %>
-                      <% if cityform == city && cityform != @cities[-1] %>
+                    <!-- Rome2Rio -->
 
-                          <div class="row" >
-                            <div class="col-md-12 col-sm-12 col-lg-12 service panel">
-                              <div class="panel-heading background-with-image-2">
-                                <div class="panel-icon"><span class="glyphicon glyphicon-transfer"></span></div>
-                                  <div class="panel-title">
-                                    <h4>How can you get from <%= city %> to <%= @cities[(indexcity + 1)] %>?</h4>
-                                    <p>There are plenty of ways: </p>
-                                  </div>
-                              </div>
-                              <div class="panel-body body-r2r">
-                                <table class="table table-travel">
-                                <% @travelscity = @travels[city]['routes'] %>
-                                  <% @travelscity.each do |route| %>
-                                    <tbody>
-                                      <tr>
-                                        <td><h5><%= route['name'] %></h5></td>
-                                          <td><h6><%= route['totalDuration'] / 60 %>h<%= (route['totalDuration'].to_i % 60) / 01 %></h6></td>
-                                            <% if route['indicativePrices'] %>
-                                              <% if route['indicativePrices'].first['priceLow'] %>
-                                                <td> <h6><%=route['indicativePrices'].first['priceLow'] %> - <%= route['indicativePrices'].first['priceHigh'] %> <%= route['indicativePrices'].first['currency'] %></h6></td>
-                                              <% elsif route['indicativePrices'].first['price'] %>
-                                                <td><h6><%= route['indicativePrices'].first['price']%> <%= route['indicativePrices'].first['currency'] %></h6></td>
-                                              <% end %>
-                                            <% else %>
-                                              <td><h6>N/A</h6></td>
+                    <% @cities.each_with_index do |cityform, indexcity| %>
+                      <% if cityform == city && cityform != @cities[-1] && city != city_array[-2] %>
+                        <div class="row" >
+                          <div class="col-md-12 col-sm-12 col-lg-12 service panel">
+                            <div class="panel-heading background-with-image-2">
+                              <div class="panel-icon"><span class="glyphicon glyphicon-transfer"></span></div>
+                                <div class="panel-title">
+                                  <h4>How can you get from <%= city %> to <%= @cities[(indexcity + 1)] %>?</h4>
+                                  <p>There are plenty of ways: </p>
+                                </div>
+                            </div>
+                            <div class="panel-body body-r2r">
+                              <table class="table table-travel">
+                              <% @travelscity = @travels[city]['routes'] %>
+                                <% @travelscity.each do |route| %>
+                                  <tbody>
+                                    <tr>
+                                      <td><h5><%= route['name'] %></h5></td>
+                                        <td><h6><%= route['totalDuration'] / 60 %>h<%= (route['totalDuration'].to_i % 60) / 01 %></h6></td>
+                                          <% if route['indicativePrices'] %>
+                                            <% if route['indicativePrices'].first['priceLow'] %>
+                                              <td> <h6><%=route['indicativePrices'].first['priceLow'] %> - <%= route['indicativePrices'].first['priceHigh'] %> <%= route['indicativePrices'].first['currency'] %></h6></td>
+                                            <% elsif route['indicativePrices'].first['price'] %>
+                                              <td><h6><%= route['indicativePrices'].first['price']%> <%= route['indicativePrices'].first['currency'] %></h6></td>
                                             <% end %>
-                                      </tr>
-                                    </tbody>
-                                  <% end %>
-                                </table>
-                                  <%= link_to "Purchase tickets", "https://www.rome2rio.com/fr/s/#{@cities[indexcity]}/#{@cities[indexcity + 1]}", target: "blank", class: "btn btn-primary btn-trip"%>
-                              </div>
+                                          <% else %>
+                                            <td><h6>N/A</h6></td>
+                                          <% end %>
+                                    </tr>
+                                  </tbody>
+                                <% end %>
+                              </table>
+                                <%= link_to "Purchase tickets", "https://www.rome2rio.com/fr/s/#{@cities[indexcity]}/#{@cities[indexcity + 1]}", target: "blank", class: "btn btn-primary btn-trip"%>
                             </div>
                           </div>
+                        </div>
                       <% end %>
                     <% end %>
             </li>
