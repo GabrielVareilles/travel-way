@@ -1,0 +1,23 @@
+.panel-body-propal {
+  background: #fff;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    padding-top: 20px;
+}
+
+.panel-body-setplaces {
+  height: 115px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  padding-top: 25px;
+  background-color: white;
+  border-radius: 6px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
