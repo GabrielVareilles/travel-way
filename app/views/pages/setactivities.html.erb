@@ -50,17 +50,17 @@
 
 <div class="main-content container fluid-container">
   <%= render 'pages/activities_timeline', places: @places %>
-</div>
 
 
 <%= hidden_field_tag 'trip[name]', params['trip']['name'] %>
 <%= hidden_field_tag 'trip[start_date]', params['trip']['start_date'] %>
 <%= hidden_field_tag 'trip[end_date]', params['trip']['end_date'] %>
 
-<%= f.button :submit %>
+<%= f.button :submit, class:"btn btn-primary", style:"float: right" %>
 
 <% end %>
 
+</div>
 
 <!-- JavaScript
 ================================================== -->
