@@ -60,8 +60,9 @@
 
 <!-- Contenu -->
 <div class="main-content container fluid-container">
-
-  <h1>Your trip: <%= @trip.name %></h1>
+  <div class="title-show">
+    <h1>Your trip: <%= @trip.name %></h1>
+  </div>
     <ul id="timeline" class="timeline">
       <% n = 0 %>
       <% @sliced_activities.each do |activities_per_group| %>
