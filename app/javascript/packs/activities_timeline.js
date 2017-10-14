@@ -10,7 +10,6 @@ function cardTemplate (activity) {
           </div>
           <div class="title">
             <h4>${activity.name}</h4>
-            <em>Homepage redesign for a well known brand.</em>
           </div>
         </div>
       </div>
@@ -115,19 +114,6 @@ function fetchActivitiesForPlace (city, callback) {
     results.categories.forEach((category, index) => {
       setTimeout(() => {
         categoriesList.insertAdjacentHTML('beforeend', buttonTemplate(city, category));
-        document.querySelectorAll(".card-setactivity").forEach( (card) => {
-          card.addEventListener("click", (event) => {
-            if (card.classList.contains("selected-card")) {
-              chosenActivities -= 1;
-              card.classList.remove("selected-card");
-              card.querySelector("input").checked = false;
-            } else {
-              chosenActivities += 1;
-              card.classList.add("selected-card");
-              card.querySelector("input").checked = true;
-            }
-          });
-        });
       }, 150 * index)
     });
   });
@@ -142,3 +128,17 @@ $(() => {
   }
 })
 
+
+document.querySelectorAll(".card-setactivity").forEach( (card) => {
+  card.addEventListener("click", (event) => {
+    if (card.classList.contains("selected-card")) {
+      chosenActivities -= 1;
+      card.classList.remove("selected-card");
+      card.querySelector("input").checked = false;
+    } else {
+      chosenActivities += 1;
+      card.classList.add("selected-card");
+      card.querySelector("input").checked = true;
+    }
+  });
+});
