@@ -9,7 +9,7 @@ function cardTemplate (activity) {
   <div>${activity.category.charAt(0).toUpperCase()}</div>
   </div>
   <div class="title">
-  <h4><input type="checkbox" class="checkbox" name="trip[activity_ids][]" value="${activity.id}">${activity.name}</h4>
+  <h4><input type="checkbox" class="checkbox hide" name="trip[activity_ids][]" value="${activity.id}">${activity.name}</h4>
   </div>
   </div>
   </div>
@@ -150,20 +150,23 @@ function ungrey() {
 
 function clickable(card) {
   card.addEventListener("click", (event) => {
+    if (card.classList.contains("grey")) {
+      return;
+    };
+    if (card.classList.contains("selected-card")) {
+      chosenActivities -= 1;
+      card.classList.remove("selected-card");
+      card.querySelector("input").checked = false;
+    } else {
+      chosenActivities += 1;
+      card.classList.add("selected-card");
+      card.querySelector("input").checked = true;
+    };
     if (chosenActivities === numberOfDays * 3) {
       console.log(chosenActivities);
       grey();
     } else {
       ungrey();
-      if (card.classList.contains("selected-card")) {
-        chosenActivities -= 1;
-        card.classList.remove("selected-card");
-        card.querySelector("input").checked = false;
-      } else {
-        chosenActivities += 1;
-        card.classList.add("selected-card");
-        card.querySelector("input").checked = true;
-      };
     };
   });
 };
