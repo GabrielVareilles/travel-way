@@ -6,10 +6,10 @@ function cardTemplate (activity) {
   <div class="panel-body">
   <div class="portfolio-title">
   <div class="portfolio-icon">
-  <div><input type="checkbox" name="trip[activity_ids][]" value="${activity.id}"></div>
+  <div>${activity.category.charAt(0).toUpperCase()}</div>
   </div>
   <div class="title">
-  <h4>${activity.name}</h4>
+  <h4><input type="checkbox" class="hide" name="trip[activity_ids][]" value="${activity.id}">${activity.name}</h4>
   </div>
   </div>
   </div>
@@ -49,8 +49,8 @@ function cardTemplate (activity) {
   </div>
   <div class="info-list">
   <ul>
-  <li>${activity.display_phone}</li>
-  <li>${activity.display_address}</li>
+  <li><i class="fa fa-phone" aria-hidden="true"></i>${activity.display_phone}</li>
+  <li><i class="fa fa-map-marker" aria-hidden="true"></i>${activity.display_address}</li>
   </ul>
   </div>
   </div>
