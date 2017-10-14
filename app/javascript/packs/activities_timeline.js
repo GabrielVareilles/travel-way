@@ -158,9 +158,11 @@ function clickable(card) {
       if (card.classList.contains("selected-card")) {
         chosenActivities -= 1;
         card.classList.remove("selected-card");
+        card.querySelector("input").checked = false;
       } else {
         chosenActivities += 1;
         card.classList.add("selected-card");
+        card.querySelector("input").checked = true;
       };
     };
   });
