@@ -48,7 +48,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $blue;
   text-decoration: none;
 }
 
@@ -61,7 +61,7 @@
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  // color: #999999 !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
