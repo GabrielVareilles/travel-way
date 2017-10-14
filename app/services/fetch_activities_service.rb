@@ -18,7 +18,7 @@ class FetchActivitiesService
   DEFAULT_BUSINESS_ID = "yelp-san-francisco"
   DEFAULT_TERM = "dinner"
   DEFAULT_LOCATION = "San Francisco, CA"
-  SEARCH_LIMIT = 1
+  SEARCH_LIMIT = 4
 
   CLIENT_ID = ENV['YELP_ID']
   CLIENT_SECRET = ENV['YELP_SECRET']
