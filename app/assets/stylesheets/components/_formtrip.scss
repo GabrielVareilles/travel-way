@@ -18,7 +18,7 @@
   border-left-style: solid;
   border-left-color: rgba(0,0,0,0.5);
   border-left-width: 8px;
-  min-height: 460px;
+  min-height: 424px;
 
 }
 
@@ -75,6 +75,12 @@ input::-webkit-date-time-edit {
   right: 0;
   width: 100px;
   margin-right: 41px;
+}
+
+.btn.background-1.form-trip:hover {
+  background-color: #44a394;
+  color: white;
+
 }
 
 .btn.btn-primary.grey {

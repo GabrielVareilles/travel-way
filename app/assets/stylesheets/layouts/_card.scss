@@ -182,10 +182,37 @@
   font-weight: 700;
 }
 
-.portfolio-icon {
+.active .portfolio-icon {
+  background-color: $blue;
+}
+
+.beautysvc .portfolio-icon {
   background-color: #ed78a6;
 }
 
+.nightlife .portfolio-icon {
+  background-color: #70c6da;
+}
+
+.restaurants .portfolio-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+// .active .portfolio-filters .btn  {
+//   background-color: $blue;
+// }
+
+// .beautysvc .portfolio-filters .btn  {
+//   background-color: #ed78a6;
+// }
+
+// .nightlife .portfolio-filters .btn  {
+//   background-color: #70c6da;
+// }
+
+// .restaurants .portfolio-filters .btn  {
+//   background-color: rgba(0, 0, 0, 0.6);
+// }
 
 // .mobile .portfolio-icon {
 //   background-color: #56c2b1;
