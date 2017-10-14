@@ -16,6 +16,8 @@ class PagesController < ApplicationController
 
   def setactivities
     @trip = Trip.new(trip_params)
+    @number_of_days = (params[:trip][:end_date].to_date - params[:trip][:start_date].to_date).to_i
+
 
     @places = params['trip']['places'].reject{ |p| p.empty? }.map do |place|
       { name: place, activities: [] }
